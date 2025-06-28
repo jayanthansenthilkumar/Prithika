@@ -89,14 +89,14 @@ const Blogs = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen">
       <Navbar />
       
       <div className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Blog</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 className="text-5xl font-bold gradient-text mb-6">Blog</h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Thoughts, tutorials, and insights about web development, technology trends, 
               and my journey as a developer.
             </p>
@@ -111,7 +111,7 @@ const Blogs = () => {
                   placeholder="Search articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
                 />
               </div>
               
@@ -122,8 +122,8 @@ const Blogs = () => {
                     onClick={() => setSelectedCategory(category)}
                     className={`px-4 py-2 rounded-full transition-colors duration-200 ${
                       selectedCategory === category
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-gray-700 hover:bg-gray-100"
+                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                        : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                     }`}
                   >
                     {category}
@@ -136,50 +136,52 @@ const Blogs = () => {
           {/* Blog Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBlogs.map((blog) => (
-              <article key={blog.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <img 
-                  src={blog.image} 
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                      {blog.category}
-                    </span>
-                  </div>
-                  
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors duration-200">
-                    {blog.title}
-                  </h2>
-                  
-                  <p className="text-gray-600 mb-4 line-clamp-3">{blog.excerpt}</p>
-                  
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
-                        <Calendar size={14} />
-                        <span>{blog.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock size={14} />
-                        <span>{blog.readTime}</span>
+              <article key={blog.id} className="gradient-border card-hover">
+                <div className="bg-gray-800/50 rounded-xl shadow-lg overflow-hidden h-full">
+                  <img 
+                    src={blog.image} 
+                    alt={blog.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="px-3 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full text-sm font-medium">
+                        {blog.category}
+                      </span>
+                    </div>
+                    
+                    <h2 className="text-xl font-bold text-white mb-3 hover:text-blue-400 transition-colors duration-200">
+                      {blog.title}
+                    </h2>
+                    
+                    <p className="text-gray-300 mb-4 line-clamp-3">{blog.excerpt}</p>
+                    
+                    <div className="flex items-center justify-between text-sm text-gray-400 mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1">
+                          <Calendar size={14} />
+                          <span>{blog.date}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Clock size={14} />
+                          <span>{blog.readTime}</span>
+                        </div>
                       </div>
                     </div>
+                    
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {blog.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="flex items-center gap-1 px-2 py-1 bg-gray-700 text-gray-300 rounded text-xs">
+                          <Tag size={10} />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <button className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200">
+                      Read More →
+                    </button>
                   </div>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
-                        <Tag size={10} />
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <button className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200">
-                    Read More →
-                  </button>
                 </div>
               </article>
             ))}
@@ -187,25 +189,29 @@ const Blogs = () => {
           
           {filteredBlogs.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-600 text-lg">No articles found matching your search criteria.</p>
+              <p className="text-gray-400 text-lg">No articles found matching your search criteria.</p>
             </div>
           )}
           
           {/* Newsletter Signup */}
-          <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Subscribe to my newsletter to get the latest articles and tutorials 
-              delivered straight to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <Input 
-                placeholder="Enter your email"
-                className="bg-white text-gray-900"
-              />
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-8 py-2 rounded-lg font-semibold transition-colors duration-200">
-                Subscribe
-              </button>
+          <div className="mt-20">
+            <div className="gradient-border card-hover">
+              <div className="bg-gray-800/50 rounded-2xl p-12 text-white text-center">
+                <h2 className="text-3xl font-bold gradient-text mb-4">Stay Updated</h2>
+                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                  Subscribe to my newsletter to get the latest articles and tutorials 
+                  delivered straight to your inbox.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                  <Input 
+                    placeholder="Enter your email"
+                    className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
+                  />
+                  <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white px-8 py-2 rounded-lg font-semibold transition-all duration-300">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

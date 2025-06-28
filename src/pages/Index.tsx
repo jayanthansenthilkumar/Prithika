@@ -7,10 +7,12 @@ import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoToTop from "@/components/GoToTop";
+import NebulaMouseFollower from "@/components/NebulaMouseFollower";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <NebulaMouseFollower />
       <Navbar />
       <Hero />
       <About />
