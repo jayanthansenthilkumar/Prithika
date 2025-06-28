@@ -27,25 +27,25 @@ const Blogs = () => {
   ];
 
   return (
-    <section id="blogs" className="py-20 bg-white">
+    <section id="blogs" className="py-20 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Blogs</h2>
-          <p className="text-xl text-gray-600">Thoughts, tutorials, and insights about web development</p>
+          <h2 className="text-4xl font-bold text-white mb-4">Latest Blogs</h2>
+          <p className="text-xl text-gray-300">Thoughts, tutorials, and insights about web development</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {blogs.map((blog, index) => (
-            <article key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <article key={index} className="bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <img 
                 src={blog.image} 
                 alt={blog.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{blog.title}</h3>
-                <p className="text-gray-600 mb-4">{blog.excerpt}</p>
-                <div className="flex items-center justify-between text-sm text-gray-500">
+                <h3 className="text-xl font-bold text-white mb-3">{blog.title}</h3>
+                <p className="text-gray-300 mb-4">{blog.excerpt}</p>
+                <div className="flex items-center justify-between text-sm text-gray-400">
                   <div className="flex items-center gap-2">
                     <Calendar size={16} />
                     <span>{blog.date}</span>
