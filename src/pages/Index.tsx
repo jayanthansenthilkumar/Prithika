@@ -7,12 +7,10 @@ import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GoToTop from "@/components/GoToTop";
-import AnimeAnimations from "@/components/AnimeAnimations";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <AnimeAnimations />
       <Navbar />
       <Hero />
       <About />
