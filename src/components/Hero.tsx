@@ -1,7 +1,7 @@
 
 import { ArrowDown, Github, Linkedin, Mail, Download, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import IOSScreen from "./iOSScreen";
+import MacBookScreen from "./MacBookScreen";
 
 const Hero = () => {
   return (
@@ -57,9 +57,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Side - iOS Screen */}
+          {/* Right Side - MacBook Screen */}
           <div className="flex justify-center lg:justify-end">
-            <IOSScreen />
+            <MacBookScreen />
           </div>
         </div>
 
