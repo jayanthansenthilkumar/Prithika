@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { 
   Wifi, 
@@ -199,7 +198,7 @@ const MacBookScreen = () => {
               <div className="mb-2">
                 <span className="text-purple-400">const</span>
                 <span className="text-blue-400"> Portfolio</span>
-                <span className="text-white"> = () => </span>
+                <span className="text-white"> = () =&gt; </span>
                 <span className="text-yellow-400">{'{'}</span>
               </div>
               <div className="mb-2 ml-4">
@@ -207,29 +206,29 @@ const MacBookScreen = () => {
                 <span className="text-white"> (</span>
               </div>
               <div className="mb-2 ml-8">
-                <span className="text-gray-500">{'<'}</span>
+                <span className="text-gray-500">&lt;</span>
                 <span className="text-red-400">div</span>
-                <span className="text-gray-500">{'>'}</span>
+                <span className="text-gray-500">&gt;</span>
               </div>
               <div className="mb-2 ml-12">
-                <span className="text-gray-500">{'<'}</span>
+                <span className="text-gray-500">&lt;</span>
                 <span className="text-red-400">Hero</span>
-                <span className="text-gray-500">{' />'}</span>
+                <span className="text-gray-500"> /&gt;</span>
               </div>
               <div className="mb-2 ml-12">
-                <span className="text-gray-500">{'<'}</span>
+                <span className="text-gray-500">&lt;</span>
                 <span className="text-red-400">About</span>
-                <span className="text-gray-500">{' />'}</span>
+                <span className="text-gray-500"> /&gt;</span>
               </div>
               <div className="mb-2 ml-12">
-                <span className="text-gray-500">{'<'}</span>
+                <span className="text-gray-500">&lt;</span>
                 <span className="text-red-400">Resume</span>
-                <span className="text-gray-500">{' />'}</span>
+                <span className="text-gray-500"> /&gt;</span>
               </div>
               <div className="mb-2 ml-8">
-                <span className="text-gray-500">{'</'}</span>
+                <span className="text-gray-500">&lt;/</span>
                 <span className="text-red-400">div</span>
-                <span className="text-gray-500">{'>'}</span>
+                <span className="text-gray-500">&gt;</span>
               </div>
               <div className="mb-2 ml-4">
                 <span className="text-white">);</span>
