@@ -9,15 +9,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Content */}
-          <div className="text-center lg:text-left">
-            <div className="mb-8">
-              <div className="w-40 h-40 mx-auto lg:mx-0 mb-6 rounded-full gradient-border p-1">
-                <div className="w-full h-full rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <span className="text-5xl font-bold gradient-text">JD</span>
-                </div>
-              </div>
-            </div>
-            
+          <div className="text-center lg:text-left">            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
               John <span className="gradient-text">Doe</span>
             </h1>
