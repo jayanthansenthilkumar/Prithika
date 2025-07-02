@@ -131,11 +131,11 @@ All colors MUST be HSL.
 
   /* Custom scrollbar styles */
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: linear-gradient(180deg, #1a1a3e 0%, #0f0f23 50%, #2d1b69 100%);
+    background: linear-gradient(180deg, #1a1a3e 0%, #0f0f23 50%, #2d1b69 500%);
     border-radius: 10px;
   }
 
