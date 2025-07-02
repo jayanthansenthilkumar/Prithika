@@ -87,66 +87,58 @@ const MacBookScreen = () => {
   };
 
   return (
-    <div className="relative">
-      {/* MacBook Frame */}
-      <div className="w-[500px] h-[350px] bg-gray-300 rounded-t-3xl p-4 shadow-2xl">
-        {/* Screen */}
-        <div className="w-full h-full bg-gray-900 rounded-2xl overflow-hidden flex flex-col relative">
-          {/* Menu Bar */}
-          <div className="flex justify-between items-center px-4 py-2 bg-gray-800/80 backdrop-blur-md text-white text-xs">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold">🍎</span>
-                <span>Finder</span>
-                <span>File</span>
-                <span>Edit</span>
-                <span>View</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1">
-                <Wifi size={14} />
-                <Battery size={14} />
-                <Volume2 size={14} />
-              </div>
-              <div className="font-mono">
-                {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </div>
+    <div className="relative w-full max-w-lg mx-auto">
+      {/* Screen Only - No Laptop Frame */}
+      <div className="w-full aspect-[16/10] bg-gray-900 rounded-2xl overflow-hidden flex flex-col relative shadow-2xl border border-gray-700">
+        {/* Menu Bar */}
+        <div className="flex justify-between items-center px-4 py-2 bg-gray-800/80 backdrop-blur-md text-white text-xs">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold">🍎</span>
+              <span>Finder</span>
+              <span>File</span>
+              <span>Edit</span>
+              <span>View</span>
             </div>
           </div>
-
-          {/* App Content */}
-          {renderApp()}
-
-          {/* Dock */}
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-            <div className="bg-gray-800/80 backdrop-blur-2xl rounded-2xl p-3 flex items-center gap-2 border border-gray-700/50">
-              {dockApps.map((app) => (
-                <button
-                  key={app.id}
-                  onClick={() => setCurrentApp(app.id)}
-                  className={`${app.color} p-2 rounded-xl hover:scale-110 transition-all duration-200 shadow-lg ${
-                    currentApp === app.id ? 'ring-2 ring-white/50' : ''
-                  }`}
-                  title={app.name}
-                >
-                  <app.icon size={16} className="text-white" />
-                </button>
-              ))}
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1">
+              <Wifi size={14} />
+              <Battery size={14} />
+              <Volume2 size={14} />
             </div>
+            <div className="font-mono">
+              {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            </div>
+          </div>
+        </div>
+
+        {/* App Content */}
+        {renderApp()}
+
+        {/* Dock */}
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+          <div className="bg-gray-800/80 backdrop-blur-2xl rounded-2xl p-3 flex items-center gap-2 border border-gray-700/50">
+            {dockApps.map((app) => (
+              <button
+                key={app.id}
+                onClick={() => setCurrentApp(app.id)}
+                className={`${app.color} p-2 rounded-xl hover:scale-110 transition-all duration-200 shadow-lg ${
+                  currentApp === app.id ? 'ring-2 ring-white/50' : ''
+                }`}
+                title={app.name}
+              >
+                <app.icon size={16} className="text-white" />
+              </button>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* MacBook Base */}
-      <div className="w-[520px] h-8 bg-gray-300 rounded-b-3xl -mt-2 mx-auto relative">
-        <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-400 rounded-full"></div>
-      </div>
-
-      {/* MacBook Info */}
+      {/* Screen Info */}
       <div className="mt-6 text-center">
-        <h3 className="text-xl font-bold gradient-text mb-2">MacBook Pro - macOS 15 Sequoia</h3>
-        <p className="text-gray-300 text-sm">Interactive demo with real app functionality!</p>
+        <h3 className="text-xl font-bold gradient-text mb-2">Interactive macOS Demo</h3>
+        <p className="text-gray-300 text-sm">Click the dock icons to explore different apps!</p>
       </div>
     </div>
   );

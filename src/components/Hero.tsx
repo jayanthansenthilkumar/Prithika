@@ -13,8 +13,8 @@ const Hero = () => {
 
   return (
     <section id="hero" className="pt-16 min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           {/* Left Side - Content */}
           <div className="text-center lg:text-left">            
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
@@ -75,8 +75,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Side - MacBook Screen */}
-          <div className="flex justify-center lg:justify-end">
+          {/* Right Side - Screen Only */}
+          <div className="flex justify-center lg:justify-start">
             <MacBookScreen />
           </div>
         </div>
