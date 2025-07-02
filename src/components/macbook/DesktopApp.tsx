@@ -1,5 +1,5 @@
 
-import { Folder, Image } from 'lucide-react';
+import { Folder, Image, Wifi, Volume2, Monitor, Battery } from 'lucide-react';
 
 const DesktopApp = () => (
   <div 

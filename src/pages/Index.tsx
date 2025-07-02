@@ -10,13 +10,15 @@ import GoToTop from "@/components/GoToTop";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
-      <Hero />
-      <About />
-      <Resume />
-      <Blogs />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Resume />
+        <Blogs />
+        <Contact />
+      </main>
       <Footer />
       <GoToTop />
     </div>
