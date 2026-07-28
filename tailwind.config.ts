@@ -20,10 +20,14 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'sans-serif'],
-				'mono': ['JetBrains Mono', 'monospace'],
+				'sans': ['Fredoka', 'sans-serif'],
 			},
 			colors: {
+        cream: '#FFF8ED',
+        yellow: '#FFE600',
+        red: '#FF4D4D',
+        green: '#6DD400',
+        blue: '#4D7CFF',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
