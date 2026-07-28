@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Code } from "lucide-react";
+import { Menu, X, Terminal } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,71 +8,79 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Resume", path: "/resume" },
-    { name: "Blogs", path: "/blogs" },
-    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full bg-gray-900/95 backdrop-blur-md border-b border-gray-700/50 z-50 shadow-lg">
+    <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-xl border-b border-white/5 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-3 text-2xl font-bold">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <Code size={20} className="text-white" />
+          <Link to="/" className="flex items-center gap-3 text-xl font-bold font-mono tracking-tighter">
+            <div className="w-8 h-8 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+              <Terminal size={16} className="text-primary" />
             </div>
-            <span className="gradient-text">Portfolio</span>
+            <span className="text-white">prithika<span className="text-primary">.dev</span></span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-1 items-center">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`px-3 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
                   isActive(item.path)
-                    ? "text-blue-400 border-b-2 border-blue-400"
-                    : "text-gray-300 hover:text-blue-400"
+                    ? "text-primary bg-primary/10"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
+            <a 
+              href="mailto:kpprithika75@gmail.com" 
+              className="ml-4 px-4 py-2 text-sm font-bold bg-white text-black hover:bg-gray-200 rounded-md transition-colors"
+            >
+              Get in touch
+            </a>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-blue-400 p-2 rounded-lg hover:bg-gray-800/50 transition-all duration-200"
+              className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/5 transition-all duration-200"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-gray-800/95 backdrop-blur-md border-t border-gray-700/50 shadow-lg">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-white/5 shadow-2xl pb-4 pt-2">
+            <div className="px-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 ${
+                  className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
                     isActive(item.path)
-                      ? "text-blue-400 bg-blue-600/20 border-l-4 border-blue-400"
-                      : "text-gray-300 hover:text-blue-400 hover:bg-gray-700/50"
+                      ? "text-primary bg-primary/10"
+                      : "text-gray-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
+              <a 
+                href="mailto:kpprithika75@gmail.com" 
+                className="block px-4 py-3 mt-4 text-sm font-bold bg-white text-black hover:bg-gray-200 rounded-lg transition-colors text-center"
+              >
+                Get in touch
+              </a>
             </div>
           </div>
         )}
