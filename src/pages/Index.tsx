@@ -1,192 +1,252 @@
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Layout, Terminal } from "lucide-react";
+import { ArrowRight, Terminal, Briefcase, Code, GraduationCap, Mail } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background relative selection:bg-primary/30 selection:text-primary">
-      <div className="absolute inset-0 bg-grid z-0 opacity-40"></div>
-      
-      {/* Abstract background glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
-
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-accent selection:text-black">
       <Navbar />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
+      <main className="pt-20">
         
-        {/* Bento Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(180px,auto)]">
+        {/* Section 1: Hero */}
+        <section className="section-padding min-h-[90vh] flex flex-col justify-center border-b-4 border-black relative overflow-hidden bg-white">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-accent rounded-full border-4 border-black brutalist-shadow -z-10 animate-bounce"></div>
+          <div className="absolute bottom-10 left-10 w-40 h-40 bg-primary rounded-none border-4 border-black brutalist-shadow -z-10 transform rotate-12"></div>
           
-          {/* Hero Profile - Span 8 columns */}
-          <div className="bento-card md:col-span-8 md:row-span-2 p-8 flex flex-col justify-center glass-panel group">
-            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 w-max text-sm font-mono">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Available for new opportunities
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-white">
-              Prithika <br/> <span className="text-glow text-primary">Kannan.</span>
+          <div className="z-10 max-w-5xl">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold uppercase mb-4 border-4 border-black inline-block px-4 sm:px-6 py-2 bg-white brutalist-shadow">
+              Hello, I am
+            </h2>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-none mb-8 break-words">
+              Prithika <br/> <span className="text-primary text-outline">Kannan</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl font-light mb-8">
-              Product-focused Software Engineer crafting data-driven experiences grounded in proven engineering traditions.
+            <p className="text-lg sm:text-xl md:text-3xl font-bold max-w-3xl mb-10 border-l-4 sm:border-l-8 border-accent pl-4 sm:pl-6 bg-white py-2">
+              Product-focused Software Engineer crafting data-driven experiences.
             </p>
-            
-            <div className="flex gap-4">
-              <a href="https://github.com/prithikakannan" target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all text-white">
-                <Github size={24} />
-              </a>
-              <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noreferrer" className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all text-white">
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:kpprithika75@gmail.com" className="p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all text-white">
-                <Mail size={24} />
-              </a>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+              <Link to="/contact" className="px-6 sm:px-8 py-3 sm:py-4 bg-accent text-black font-black uppercase text-lg sm:text-xl border-4 border-black brutalist-shadow hover:bg-black hover:text-white transition-colors text-center">
+                Let's Talk
+              </Link>
+              <Link to="/resume" className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-black uppercase text-lg sm:text-xl border-4 border-black brutalist-shadow hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                View Resume <ArrowRight />
+              </Link>
             </div>
           </div>
+        </section>
 
-          {/* Education - Span 4 columns */}
-          <div className="bento-card md:col-span-4 p-8 glass-panel flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 text-primary">
-                <Layout size={20} />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">Education</h3>
-              <p className="text-muted-foreground text-sm font-medium">B.Tech - Information Technology</p>
-              <p className="text-white font-semibold mt-1">M. Kumarasamy College of Engineering</p>
-            </div>
-            <div className="mt-6 flex justify-between items-end border-t border-white/10 pt-4">
-              <div className="font-mono text-xs text-muted-foreground">2024 - 2028</div>
-              <div className="font-mono text-primary font-bold">CGPA: 7.9</div>
-            </div>
-          </div>
-
-          {/* Industrial Experience - Span 6 columns */}
-          <div className="bento-card md:col-span-6 md:row-span-2 p-8 glass-panel">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
-                <Database size={20} />
-              </div>
-              <h3 className="text-2xl font-bold text-white">Experience</h3>
+        {/* Section 2: About */}
+        <section className="section-padding border-b-4 border-black bg-gray-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+              <Terminal size={48} className="text-primary hidden sm:block" />
+              <Terminal size={36} className="text-primary sm:hidden" />
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">About Me</h2>
             </div>
             
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between items-start mb-1">
-                  <h4 className="text-lg font-bold text-white">RSUN Technologies</h4>
-                  <span className="font-mono text-xs text-primary bg-primary/10 px-2 py-1 rounded">June 2026</span>
+            <div className="bg-white border-4 border-black p-6 sm:p-8 md:p-12 brutalist-shadow">
+              <p className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
+                I am a Software Engineer grounded in proven engineering traditions, currently pursuing my B.Tech in Information Technology. 
+              </p>
+              <p className="text-xl md:text-2xl font-medium leading-relaxed">
+                I blend analytical focus with creative problem-solving to build scalable, client-centric applications aligned with AI-driven transformation goals. My focus is on creating tools that perform flawlessly and look exceptional.
+              </p>
+              <div className="mt-10">
+                <Link to="/about" className="inline-flex items-center gap-2 font-black uppercase text-lg border-b-4 border-primary hover:text-primary transition-colors pb-1">
+                  Read My Full Story <ArrowRight size={20} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 3: Experience Highlights */}
+        <section className="section-padding border-b-4 border-black bg-white">
+          <div className="flex items-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            <Briefcase size={48} className="text-accent hidden sm:block" />
+            <Briefcase size={36} className="text-accent sm:hidden" />
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">Experience</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="bg-white border-4 border-black p-8 brutalist-shadow hover:bg-accent transition-colors group relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white border-b-4 border-l-4 border-black transform translate-x-16 -translate-y-16 rotate-45 group-hover:bg-primary transition-colors"></div>
+              <div className="flex justify-between items-start mb-6 relative z-10">
+                <div>
+                  <h3 className="text-3xl font-black uppercase">Backend Developer</h3>
+                  <p className="text-xl font-bold mt-2">RSUN Technologies</p>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">Backend Developer</p>
-                <ul className="space-y-3">
-                  <li className="flex gap-2 text-sm text-gray-300">
-                    <span className="text-primary mt-1">▹</span>
-                    <span>Built scalable distributed backend with PHP & SQL, reducing latency by <strong className="text-white">30%</strong>.</span>
-                  </li>
-                  <li className="flex gap-2 text-sm text-gray-300">
-                    <span className="text-primary mt-1">▹</span>
-                    <span>Developed RESTful APIs to improve communication and system reliability by <strong className="text-white">40%</strong>.</span>
-                  </li>
-                  <li className="flex gap-2 text-sm text-gray-300">
-                    <span className="text-primary mt-1">▹</span>
-                    <span>Optimized queries and indexing, cutting processing time by <strong className="text-white">35%</strong>.</span>
-                  </li>
-                </ul>
+                <span className="bg-black text-white px-4 py-2 font-bold uppercase text-sm border-2 border-black">June 2026</span>
+              </div>
+              <ul className="space-y-4 mb-8 relative z-10">
+                <li className="flex gap-4 items-start font-medium text-lg">
+                  <div className="w-3 h-3 bg-black mt-2 flex-shrink-0"></div>
+                  <span>Built scalable distributed backend with PHP & SQL, reducing latency by 30%.</span>
+                </li>
+                <li className="flex gap-4 items-start font-medium text-lg">
+                  <div className="w-3 h-3 bg-black mt-2 flex-shrink-0"></div>
+                  <span>Developed RESTful APIs to improve communication and system reliability by 40%.</span>
+                </li>
+              </ul>
+              <Link to="/resume" className="inline-flex items-center gap-2 font-black uppercase bg-white border-4 border-black px-6 py-3 hover:bg-black hover:text-white transition-colors relative z-10">
+                See Full Resume <ArrowRight size={20} />
+              </Link>
+            </div>
+            
+            <div className="bg-primary border-4 border-black p-8 brutalist-shadow flex flex-col justify-center items-center text-center">
+              <h3 className="text-4xl font-black uppercase text-white mb-6">Looking for new opportunities?</h3>
+              <Link to="/contact" className="px-8 py-4 bg-white text-black border-4 border-black font-black uppercase text-xl hover:bg-accent transition-colors">
+                Hire Me Now
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: Featured Projects */}
+        <section className="section-padding border-b-4 border-black bg-gray-50">
+          <div className="flex items-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            <Code size={48} className="text-primary hidden sm:block" />
+            <Code size={36} className="text-primary sm:hidden" />
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">Projects</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Project 1 */}
+            <div className="bg-white border-4 border-black brutalist-shadow flex flex-col group">
+              <div className="h-48 border-b-4 border-black bg-accent p-6 flex flex-col justify-between">
+                <h3 className="text-3xl font-black uppercase line-clamp-2">PLANGO</h3>
+                <span className="bg-white text-black font-bold uppercase px-3 py-1 border-2 border-black w-max">AI Trip Planner</span>
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <p className="text-lg font-medium mb-6">
+                  Scalable AI-based trip optimizer with real-time traffic data, improving route accuracy by 40% and reducing latency by 60%.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Flask', 'Python-ML', 'SQLite'].map(tech => (
+                    <span key={tech} className="bg-gray-200 border-2 border-black px-2 py-1 text-xs font-bold uppercase">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Project 2 */}
+            <div className="bg-white border-4 border-black brutalist-shadow flex flex-col group">
+              <div className="h-48 border-b-4 border-black bg-primary p-6 flex flex-col justify-between">
+                <h3 className="text-3xl font-black uppercase text-white line-clamp-2">Geo Tagging System</h3>
+                <span className="bg-white text-black font-bold uppercase px-3 py-1 border-2 border-black w-max">Issue Reporter</span>
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <p className="text-lg font-medium mb-6">
+                  Location-based complaint platform with real-time map integration, reducing issue reporting time by 50%.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['PHP', 'MySQL', 'Google Maps API'].map(tech => (
+                    <span key={tech} className="bg-gray-200 border-2 border-black px-2 py-1 text-xs font-bold uppercase">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="bg-white border-4 border-black brutalist-shadow flex flex-col group">
+              <div className="h-48 border-b-4 border-black bg-black p-6 flex flex-col justify-between">
+                <h3 className="text-3xl font-black uppercase text-white line-clamp-2">Rock Paper Scissors</h3>
+                <span className="bg-white text-black font-bold uppercase px-3 py-1 border-2 border-black w-max">Game</span>
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <p className="text-lg font-medium mb-6">
+                  Interactive command-line game with randomized logic and accurate win/loss tracking.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Python', 'CLI'].map(tech => (
+                    <span key={tech} className="bg-gray-200 border-2 border-black px-2 py-1 text-xs font-bold uppercase">{tech}</span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+          
+          <div className="text-center">
+            <Link to="/blogs" className="inline-flex items-center gap-2 font-black uppercase text-2xl border-4 border-black px-8 py-4 bg-white brutalist-shadow hover:bg-accent transition-colors">
+              View All Projects <ArrowRight size={24} />
+            </Link>
+          </div>
+        </section>
 
-          {/* Tech Stack - Span 6 columns */}
-          <div className="bento-card md:col-span-6 p-8 glass-panel flex flex-col font-mono relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
-            <div className="flex items-center gap-2 text-muted-foreground mb-6">
-              <Terminal size={16} />
-              <span className="text-sm">~/skills.json</span>
-            </div>
-            <div className="text-sm leading-loose">
-              <span className="text-blue-400">const</span> <span className="text-yellow-200">skills</span> = {'{'}
-              <div className="pl-4">
-                <span className="text-blue-300">languages:</span> [<span className="text-green-300">"Python"</span>, <span className="text-green-300">"JavaScript"</span>, <span className="text-green-300">"HTML"</span>, <span className="text-green-300">"CSS"</span>],<br/>
-                <span className="text-blue-300">frameworks:</span> [<span className="text-green-300">"Flask"</span>],<br/>
-                <span className="text-blue-300">tools:</span> [<span className="text-green-300">"GitHub"</span>, <span className="text-green-300">"Git"</span>, <span className="text-green-300">"MySQL"</span>, <span className="text-green-300">"REST APIs"</span>],
+        {/* Section 5: Education & Skills */}
+        <section className="section-padding border-b-4 border-black bg-white">
+          <div className="flex items-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            <GraduationCap size={48} className="text-accent hidden sm:block" />
+            <GraduationCap size={36} className="text-accent sm:hidden" />
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">Education & Skills</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-5 bg-primary border-4 border-black brutalist-shadow p-8 flex flex-col justify-center">
+              <h3 className="text-3xl font-black uppercase text-white mb-8 border-b-4 border-white pb-4">Education</h3>
+              <div className="bg-white border-4 border-black p-6">
+                <h4 className="text-2xl font-bold uppercase mb-2">B.Tech - Information Technology</h4>
+                <p className="text-xl font-medium mb-4">M. Kumarasamy College of Engineering</p>
+                <div className="flex justify-between items-center font-bold uppercase border-t-2 border-black pt-4">
+                  <span>2024 - 2028</span>
+                  <span className="bg-accent px-3 py-1 border-2 border-black">CGPA: 7.9</span>
+                </div>
               </div>
-              {'}'};
+            </div>
+            
+            <div className="md:col-span-7 bg-white border-4 border-black brutalist-shadow p-8">
+              <h3 className="text-3xl font-black uppercase mb-8 border-b-4 border-black pb-4">Tech Arsenal</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-xl font-bold uppercase mb-3">Languages</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {['Python', 'HTML', 'CSS', 'JavaScript'].map(skill => (
+                      <span key={skill} className="bg-accent border-4 border-black px-4 py-2 font-bold uppercase text-lg">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold uppercase mb-3">Frameworks & Tools</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {['Flask', 'GitHub', 'Git', 'MySQL', 'REST APIs'].map(skill => (
+                      <span key={skill} className="bg-gray-100 border-4 border-black px-4 py-2 font-bold uppercase text-lg">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold uppercase mb-3">Certifications</h4>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-black text-white border-4 border-black px-4 py-2 font-bold uppercase text-lg">GitHub Foundations</span>
+                    <span className="bg-black text-white border-4 border-black px-4 py-2 font-bold uppercase text-lg">Finalist - SRMIST Hackathon</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Project 1 - PLANGO - Span 6 columns */}
-          <div className="bento-card md:col-span-6 p-8 glass-panel group">
-            <div className="flex justify-between items-start mb-4">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:text-primary transition-colors">
-                <Code2 size={24} />
-              </div>
-              <ExternalLink size={20} className="text-muted-foreground group-hover:text-white transition-colors cursor-pointer" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">PLANGO - AI Trip Planner</h3>
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-              Scalable AI-based trip optimizer with real-time traffic data, improving route accuracy by 40% and reducing latency by 60%.
+        {/* Section 6: Contact / CTA */}
+        <section className="section-padding bg-accent">
+          <div className="max-w-4xl mx-auto text-center border-4 border-black bg-white p-6 sm:p-12 md:p-20 brutalist-shadow">
+            <Mail size={64} className="mx-auto mb-6 sm:mb-8 text-primary" />
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4 sm:mb-6 break-words">Let's Build Something Great</h2>
+            <p className="text-lg sm:text-2xl font-medium mb-8 sm:mb-12">
+              Ready to turn ideas into reality? Drop me a line and let's collaborate on your next project.
             </p>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {['Flask', 'Python-ML', 'SQLite', 'JS'].map(tech => (
-                <span key={tech} className="text-xs font-mono px-2 py-1 bg-white/5 rounded-md border border-white/5 text-gray-300">
-                  {tech}
-                </span>
-              ))}
+            <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+              <a href="mailto:kpprithika75@gmail.com" className="px-6 sm:px-10 py-4 sm:py-5 bg-primary text-white font-black uppercase text-xl sm:text-2xl border-4 border-black brutalist-shadow hover:bg-black hover:text-white transition-colors">
+                Email Me
+              </a>
+              <Link to="/contact" className="px-10 py-5 bg-white text-black font-black uppercase text-2xl border-4 border-black brutalist-shadow hover:bg-accent transition-colors">
+                Contact Form
+              </Link>
             </div>
           </div>
+        </section>
 
-          {/* Project 2 - Geo Tagging - Span 6 columns */}
-          <div className="bento-card md:col-span-6 p-8 glass-panel group">
-            <div className="flex justify-between items-start mb-4">
-              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:text-primary transition-colors">
-                <Layout size={24} />
-              </div>
-              <ExternalLink size={20} className="text-muted-foreground group-hover:text-white transition-colors cursor-pointer" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-2">Geo Tagging Issue System</h3>
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-              Location-based complaint platform with real-time map integration, reducing issue reporting time by 50% with role-based dashboards.
-            </p>
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {['PHP', 'MySQL', 'Google Maps API'].map(tech => (
-                <span key={tech} className="text-xs font-mono px-2 py-1 bg-white/5 rounded-md border border-white/5 text-gray-300">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Project 3 - RPS - Span 4 columns */}
-          <div className="bento-card md:col-span-4 p-8 glass-panel">
-            <h3 className="text-lg font-bold text-white mb-2">Rock Paper Scissors</h3>
-            <p className="text-sm text-muted-foreground mb-4">
-              Interactive command-line game with randomized logic and accurate win/loss tracking. Modular design for maintainability.
-            </p>
-            <div className="font-mono text-xs text-primary">Python</div>
-          </div>
-
-          {/* Certifications - Span 8 columns */}
-          <div className="bento-card md:col-span-8 p-8 glass-panel flex flex-col justify-center">
-            <h3 className="text-xl font-bold text-white mb-4">Certifications & Achievements</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                <span className="font-medium text-white">GitHub Foundations</span>
-              </div>
-              <div className="flex items-center gap-3 bg-white/5 p-4 rounded-xl border border-white/5">
-                <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
-                <span className="font-medium text-white">Finalist - SRMIST Hackathon</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </main>
       
-      {/* We can keep the footer but it needs a redesign to match. We will use a simplified one below, or rely on the imported Footer after updating it. */}
-      {/* I will update the Footer component next. */}
       <Footer />
     </div>
   );
