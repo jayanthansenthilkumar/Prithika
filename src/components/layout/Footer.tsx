@@ -10,7 +10,7 @@ export function Footer() {
         }}
       >
         <div
-          className="font-serif italic font-bold text-transparent text-[16vw] sm:text-[14vw] md:text-[12vw] tracking-tighter leading-none whitespace-nowrap"
+          className="font-serif italic font-bold text-transparent text-[11vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] tracking-tighter leading-none whitespace-nowrap"
           style={{ WebkitTextStroke: '2px rgba(0,0,0,0.25)' }}
         >
           Prithika Kannan

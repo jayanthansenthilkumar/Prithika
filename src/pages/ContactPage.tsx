@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Terminal, Mail, ArrowRight, MapPin, Code2, Briefcase } from "lucide-react";
+import { Terminal, Mail, ArrowRight, MapPin, Code2, Briefcase, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactPage() {
@@ -99,6 +99,16 @@ export default function ContactPage() {
               </p>
               
               <div className="space-y-4">
+                <a href="tel:+919787673783" className="block">
+                  <div className="bg-white border border-gray-200 shadow-sm rounded-sm p-6 hover:border-gray-300 transition-colors">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Phone className="w-4 h-4 text-blue-600" />
+                      <h3 className="text-base font-bold text-gray-900 font-serif">Phone</h3>
+                    </div>
+                    <p className="text-xs font-mono text-gray-600">+91 9787673783</p>
+                  </div>
+                </a>
+
                 <a href="mailto:kpprithika75@gmail.com" className="block">
                   <div className="bg-white border border-gray-200 shadow-sm rounded-sm p-6 hover:border-gray-300 transition-colors">
                     <div className="flex items-center gap-2 mb-2">

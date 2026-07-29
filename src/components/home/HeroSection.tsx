@@ -1,5 +1,6 @@
 import { ArrowRight, Code, Terminal, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export function HeroSection() {
   return (
@@ -33,19 +34,20 @@ export function HeroSection() {
         </p>
         
         <div className="flex flex-row gap-3 justify-center mb-6">
-          <a href="#projects">
+          <Link to="/projects">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-sm h-10 px-5 flex items-center gap-2 shadow-sm">
               <span className="font-sans font-medium text-sm">View Projects</span>
               <ArrowRight className="w-4 h-4" />
             </Button>
-          </a>
-          <a href="mailto:kpprithika75@gmail.com">
+          </Link>
+          <Link to="/contact">
             <Button variant="outline" size="lg" className="rounded-sm h-10 px-5 bg-white border-gray-200 hover:bg-gray-50 text-gray-700 flex items-center gap-2 shadow-sm">
               <span className="font-sans font-medium text-sm">Contact Me</span>
             </Button>
-          </a>
+          </Link>
         </div>
       </div>
+
 
       {/* 3 Column Feature Grid (Bordered) */}
       <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-200 bg-transparent text-left relative z-10 max-w-7xl mx-auto">
