@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TechnologyStack } from "@/components/home/TechnologyStack";
-import { WhyChooseUs } from "@/components/home/WhyChooseUs";
-import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
 
 export default function Home() {
   return (
@@ -14,8 +12,6 @@ export default function Home() {
       
       <HeroSection />
       <TechnologyStack />
-      <WhyChooseUs />
-      <FeaturedCaseStudies />
       
       {/* Spacer before footer */}
       <div className="py-12"></div>
