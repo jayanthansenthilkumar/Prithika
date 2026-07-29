@@ -23,8 +23,9 @@ export default function ProjectOverviewPage() {
   return (
     <div className="flex flex-col min-h-screen pt-14 bg-gray-50">
       <Helmet>
-        <title>{project.title} - Prithika Kannan</title>
-        <meta name="description" content={`Overview of ${project.title}`} />
+        <title>{project.title} | Case Study - Prithika Kannan</title>
+        <meta name="description" content={`Detailed case study for ${project.title}. Read about the problem, the solution, and the tech stack including ${project.techStack.join(', ')}.`} />
+        <meta name="keywords" content={`${project.title}, ${project.techStack.join(', ')}, Software Engineering Case Study, Prithika Kannan`} />
       </Helmet>
       
       {/* Header Section */}

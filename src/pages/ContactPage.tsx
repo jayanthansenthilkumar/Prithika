@@ -13,8 +13,9 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen pt-14">
       <Helmet>
-        <title>Contact - Prithika Kannan</title>
-        <meta name="description" content="Contact Prithika Kannan." />
+        <title>Contact Prithika Kannan | Software Engineer</title>
+        <meta name="description" content="Get in touch with Prithika Kannan for software engineering opportunities, freelance projects, or collaborations. Available via email, LinkedIn, and GitHub." />
+        <meta name="keywords" content="Contact Prithika Kannan, Hire Software Engineer, Full-Stack Developer Contact, Tech Collaborations, Madurai Developer" />
       </Helmet>
       
       {/* Hero */}

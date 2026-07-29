@@ -6,8 +6,9 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen pt-14">
       <Helmet>
-        <title>About - Prithika Kannan</title>
-        <meta name="description" content="About Prithika Kannan, Software Engineer." />
+        <title>About Prithika Kannan | Background, Education & Skills</title>
+        <meta name="description" content="Learn about Prithika Kannan's background as a Product-focused Software Engineer, her education at M. Kumarasamy College of Engineering, and her industrial experience at RSUN Technologies." />
+        <meta name="keywords" content="About Prithika Kannan, Software Engineer Background, M. Kumarasamy College of Engineering, RSUN Technologies Madurai, Tech Certifications, GitHub Foundations" />
       </Helmet>
       
       <section className="pt-24 pb-12 border-b border-gray-200 bg-transparent">
