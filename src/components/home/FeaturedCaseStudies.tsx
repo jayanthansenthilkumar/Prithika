@@ -24,38 +24,41 @@ export function FeaturedCaseStudies() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-200 border border-gray-200 shadow-sm rounded-sm overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.title}
-              className="group flex flex-col bg-white hover:bg-gray-50 transition-colors h-full"
+              className="relative flex flex-col bg-[#fdfdfd] border border-blue-100/60 shadow-sm rounded-sm overflow-hidden h-full group"
             >
-              <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-100">
-                <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">Project</span>
-                <span className="text-[10px] font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded-sm border border-blue-100">{project.tech}</span>
-              </div>
+              {/* Grid Background */}
+              <div className="absolute inset-0 pointer-events-none opacity-[0.08] bg-[linear-gradient(to_right,#2563eb_1px,transparent_1px),linear-gradient(to_bottom,#2563eb_1px,transparent_1px)] bg-[size:16px_16px]"></div>
               
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-end gap-3 mb-6">
-                  <div className="text-4xl font-bold text-gray-900 font-serif italic">{project.metric}</div>
-                  <div className="text-xs font-mono text-gray-500 uppercase mb-1.5">{project.metricLabel}</div>
-                </div>
+              <div className="relative z-10 p-8 flex flex-col flex-grow">
+                <h3 className="text-sm font-bold text-gray-900 uppercase tracking-[0.15em] mb-8 font-sans">
+                  {project.title}
+                </h3>
                 
-                <h3 className="text-sm font-bold text-gray-900 font-serif mb-3">{project.title}</h3>
-                <p className="text-gray-600 text-xs font-mono leading-relaxed mb-6 flex-grow">
-                  {project.description}
+                <p className="text-gray-700 text-[13px] font-mono leading-[1.8] flex-grow mb-10 whitespace-pre-line">
+                  "{project.description}"
                 </p>
                 
-                <div className="flex flex-row gap-2 mt-auto pt-4 border-t border-gray-100">
-                  <Link to={`/projects/${project.id}`} className="flex-1">
-                    <button className="w-full flex items-center justify-center gap-1.5 rounded-sm font-mono text-xs bg-blue-600 text-white hover:bg-blue-700 px-2 py-2 shadow-sm transition-colors border border-blue-700 whitespace-nowrap">
-                      Overview <ArrowRight className="w-3 h-3 shrink-0" />
-                    </button>
+                <div className="flex items-center gap-4 mt-auto pt-6 border-t border-gray-200/50">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold font-sans text-xs shrink-0">
+                    PK
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold text-gray-900 font-sans leading-tight">Prithika Kannan</span>
+                    <span className="text-xs font-sans text-gray-500 leading-tight">Software Engineer</span>
+                  </div>
+                </div>
+
+                {/* Hover overlay links */}
+                <div className="absolute top-6 right-6 flex opacity-0 group-hover:opacity-100 transition-opacity gap-2">
+                  <Link to={`/projects/${project.id}`} className="p-1.5 bg-white border border-blue-100 text-blue-600 rounded-sm hover:bg-blue-50 transition-colors shadow-sm" title="Overview">
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
-                    <button className="w-full flex items-center justify-center gap-1.5 rounded-sm font-mono text-xs text-gray-700 bg-white hover:bg-gray-50 border border-gray-200 px-2 py-2 transition-colors whitespace-nowrap">
-                      Source <CodeSquare className="w-3 h-3 text-gray-400 shrink-0" />
-                    </button>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-1.5 bg-white border border-gray-200 text-gray-600 rounded-sm hover:bg-gray-50 transition-colors shadow-sm" title="Source Code">
+                    <CodeSquare className="w-4 h-4" />
                   </a>
                 </div>
               </div>
