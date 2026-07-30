@@ -39,6 +39,7 @@ export function Navbar() {
             <Link to="/about" className={cn("transition-colors", isActive('/about') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>About</Link>
             <Link to="/skills" className={cn("transition-colors", isActive('/skills') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>Skills</Link>
             <Link to="/projects" className={cn("transition-colors", isActive('/projects') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>Projects</Link>
+            <Link to="/resume" className={cn("transition-colors", isActive('/resume') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>Resume</Link>
             <Link to="/open-source" className={cn("transition-colors", isActive('/open-source') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>Open Source</Link>
             <Link to="/contact" className={cn("transition-colors", isActive('/contact') ? "text-blue-600 font-bold" : "hover:text-gray-900")}>Contact</Link>
           </nav>
@@ -69,6 +70,7 @@ export function Navbar() {
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/about') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>About</Link>
           <Link to="/skills" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/skills') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>Skills</Link>
           <Link to="/projects" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/projects') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>Projects</Link>
+          <Link to="/resume" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/resume') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>Resume</Link>
           <Link to="/open-source" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/open-source') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>Open Source</Link>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className={cn("block w-full text-left", isActive('/contact') ? "text-blue-600 font-bold" : "text-gray-600 hover:text-gray-900")}>Contact</Link>
           <div className="pt-4 border-t border-gray-200 flex flex-col gap-2">

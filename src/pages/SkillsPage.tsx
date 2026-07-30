@@ -109,7 +109,7 @@ export default function SkillsPage() {
                       <div className="w-full bg-gray-100 rounded-full h-1.5">
                         <div 
                           className="bg-blue-600 h-1.5 rounded-full transition-all duration-1000 ease-out" 
-                          style={{ width: `${skill.level}%` }}
+                          style={{ width: skill.level + '%' }}
                         ></div>
                       </div>
                     </div>
