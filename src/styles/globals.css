@@ -163,6 +163,9 @@
     @apply font-sans;
     scroll-behavior: smooth;
   }
+  p, h6 {
+    font-family: var(--font-jakarta);
+  }
 }
 
 /* Custom Webkit Scrollbar */
