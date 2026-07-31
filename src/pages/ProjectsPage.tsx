@@ -36,7 +36,7 @@ export default function ProjectsPage() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{ color: 'var(--text-tertiary)', transition: 'color var(--transition-fast)' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--claude-orange)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-tertiary)'}
                 title="View Source on GitHub"
               >
@@ -73,11 +73,10 @@ export default function ProjectsPage() {
                   key={idx}
                   style={{
                     padding: '0.35rem 1rem',
-                    backgroundColor: 'var(--bg-main)',
+                    backgroundColor: 'var(--claude-beige)',
                     borderRadius: 'var(--radius-full)',
                     fontSize: '13px',
-                    color: 'var(--text-primary)',
-                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--claude-orange)',
                     fontFamily: 'var(--font-sans)',
                     fontWeight: 500
                   }}

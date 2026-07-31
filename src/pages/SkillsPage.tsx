@@ -50,7 +50,9 @@ export default function SkillsPage() {
         {skillCategories.map((category, idx) => (
           <div key={idx} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-primary)', marginBottom: '1.5rem', fontWeight: 500 }}>
-              {category.icon}
+              <div style={{ backgroundColor: 'var(--claude-beige)', color: 'var(--claude-orange)', padding: '0.5rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {category.icon}
+              </div>
               <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-sans)' }}>{category.title}</span>
             </div>
             
@@ -69,9 +71,9 @@ export default function SkillsPage() {
                     transition: 'border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast)'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-hover)';
-                    e.currentTarget.style.color = 'var(--text-primary)';
-                    e.currentTarget.style.backgroundColor = 'var(--bg-hover)';
+                    e.currentTarget.style.borderColor = 'var(--claude-orange)';
+                    e.currentTarget.style.color = 'var(--claude-orange)';
+                    e.currentTarget.style.backgroundColor = 'var(--claude-beige)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = 'var(--border-subtle)';

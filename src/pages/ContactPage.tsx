@@ -149,7 +149,9 @@ export default function ContactPage() {
               alignItems: 'flex-start',
               gap: '1rem'
             }}>
-              <MapPin size={24} style={{ color: 'var(--accent)', marginTop: '0.2rem' }} />
+              <div style={{ backgroundColor: 'var(--claude-beige)', color: 'var(--claude-orange)', padding: '0.4rem', borderRadius: 'var(--radius-md)' }}>
+                <MapPin size={20} style={{ marginTop: '0.1rem' }} />
+              </div>
               <div>
                 <h4 style={{ margin: 0, fontSize: '1.1rem', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)', marginBottom: '0.25rem' }}>Location & Mobility</h4>
                 <p style={{ margin: 0, fontSize: '0.95rem', fontFamily: 'var(--font-serif)', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -162,8 +164,8 @@ export default function ContactPage() {
           {/* Contact Info Cards */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', flexShrink: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-              <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-main)', borderRadius: 'var(--radius-md)', border: '1px solid rgba(210, 92, 67, 0.2)' }}>
-                <Mail size={20} style={{ color: 'var(--accent)' }} />
+              <div style={{ padding: '0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-md)', color: 'var(--claude-orange)' }}>
+                <Mail size={20} />
               </div>
               <div>
                 <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Email</div>
@@ -172,15 +174,15 @@ export default function ContactPage() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-              <div style={{ padding: '0.75rem', backgroundColor: 'var(--bg-main)', borderRadius: 'var(--radius-md)', border: '1px solid rgba(210, 92, 67, 0.2)' }}>
-                <MessageSquare size={20} style={{ color: 'var(--accent)' }} />
+              <div style={{ padding: '0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-md)', color: 'var(--claude-orange)' }}>
+                <MessageSquare size={20} />
               </div>
               <div>
                 <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Contact</div>
                 <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.95rem', fontFamily: 'var(--font-sans)' }}>
-                  <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--claude-orange)', textDecoration: 'none' }}>LinkedIn</a>
                   <span style={{ color: 'var(--border-subtle)' }}>|</span>
-                  <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>GitHub</a>
+                  <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--claude-orange)', textDecoration: 'none' }}>GitHub</a>
                 </div>
               </div>
             </div>

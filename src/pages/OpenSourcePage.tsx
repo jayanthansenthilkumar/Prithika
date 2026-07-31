@@ -107,7 +107,7 @@ export default function OpenSourcePage() {
                   {repo.repo.split('/').pop()}
                 </a>
               </div>
-              <span style={{ fontSize: '13px', padding: '0.35rem 0.75rem', backgroundColor: 'var(--bg-main)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-full)', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)' }}>
+              <span style={{ fontSize: '13px', padding: '0.35rem 0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-full)', color: 'var(--claude-orange)', fontFamily: 'var(--font-sans)', fontWeight: 500 }}>
                 {repo.type}
               </span>
             </div>
@@ -118,7 +118,7 @@ export default function OpenSourcePage() {
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '14px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-sans)', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--accent)' }}></div>
+                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--claude-orange)' }}></div>
                 {repo.language}
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
