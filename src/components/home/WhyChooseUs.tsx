@@ -2,14 +2,14 @@ import { Briefcase, GraduationCap, Award } from "lucide-react";
 
 export function WhyChooseUs() {
   return (
-    <section id="experience" className="py-24 border-b-4 border-foreground bg-primary">
+    <section id="experience" className="py-24 border-b-[3px] border-foreground bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
           <div>
             <h2 className="text-4xl font-black text-foreground mb-6 font-heading uppercase tracking-tighter">
-              Experience & <span className="bg-background px-2 border-2 border-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)]">Background</span>
+              Experience & <span className="bg-background px-2 border-[3px] border-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)]">Background</span>
             </h2>
             <p className="text-sm font-mono font-bold text-foreground mb-12">
               A blend of academic foundation and practical industry experience building scalable systems.
@@ -19,12 +19,12 @@ export function WhyChooseUs() {
               {/* Experience */}
               <div className="group">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 border-2 border-foreground bg-background group-hover:shadow-[4px_4px_0px_0px_var(--color-foreground)] transition-shadow">
+                  <div className="p-3 border-[3px] border-foreground bg-background group-hover:shadow-[4px_4px_0px_0px_var(--color-foreground)] transition-shadow">
                     <Briefcase className="w-6 h-6 text-foreground" />
                   </div>
                   <div>
                     <h3 className="text-xl font-black text-foreground font-heading uppercase">RSUN Technologies</h3>
-                    <p className="text-xs font-mono font-bold text-foreground bg-background inline-block px-2 py-0.5 border-2 border-foreground">Madurai | June 2026</p>
+                    <p className="text-xs font-mono font-bold text-foreground bg-background inline-block px-2 py-0.5 border-[3px] border-foreground">Madurai | June 2026</p>
                   </div>
                 </div>
                 <ul className="list-disc text-sm font-mono font-bold text-foreground leading-relaxed pl-14 space-y-2">
@@ -37,12 +37,12 @@ export function WhyChooseUs() {
               {/* Education */}
               <div className="group">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 border-2 border-foreground bg-background group-hover:shadow-[4px_4px_0px_0px_var(--color-foreground)] transition-shadow">
+                  <div className="p-3 border-[3px] border-foreground bg-background group-hover:shadow-[4px_4px_0px_0px_var(--color-foreground)] transition-shadow">
                     <GraduationCap className="w-6 h-6 text-foreground" />
                   </div>
                   <div>
                     <h3 className="text-xl font-black text-foreground font-heading uppercase leading-tight">M. Kumarasamy College of Engineering</h3>
-                    <p className="text-xs font-mono font-bold text-foreground bg-background inline-block px-2 py-0.5 border-2 border-foreground mt-2">2024 - 2028</p>
+                    <p className="text-xs font-mono font-bold text-foreground bg-background inline-block px-2 py-0.5 border-[3px] border-foreground mt-2">2024 - 2028</p>
                   </div>
                 </div>
                 <p className="text-sm font-mono font-bold text-foreground leading-relaxed pl-14">
@@ -54,8 +54,8 @@ export function WhyChooseUs() {
           </div>
           
           {/* Terminal / Certifications Box */}
-          <div className="rounded-none border-4 border-foreground bg-background shadow-brutal-lg font-mono text-xs h-full min-h-[400px] flex flex-col overflow-hidden hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] transition-all">
-            <div className="px-4 py-3 bg-foreground text-background flex justify-between font-bold uppercase tracking-widest border-b-4 border-foreground">
+          <div className="rounded-none border-[3px] border-foreground bg-background shadow-brutal-lg font-mono text-xs h-full min-h-[400px] flex flex-col overflow-hidden hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] transition-all">
+            <div className="px-4 py-3 bg-foreground text-background flex justify-between font-bold uppercase tracking-widest border-b-[3px] border-foreground">
               <span>certifications.json</span>
               <span>100%</span>
             </div>

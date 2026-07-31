@@ -4,14 +4,11 @@ export function Footer() {
   return (
     <>
       <div
-        className="w-full relative overflow-hidden bg-white flex items-center justify-center py-2 md:py-4 select-none border-t border-gray-100"
-        style={{
-          backgroundImage: 'repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.05) 1px, transparent 1px, transparent 8px)'
-        }}
+        className="w-full relative overflow-hidden bg-background flex items-center justify-center py-4 select-none border-t-[3px] border-foreground"
       >
         <div
-          className="font-serif italic font-bold text-transparent text-[11vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] tracking-tighter leading-none whitespace-nowrap"
-          style={{ WebkitTextStroke: '2px rgba(0,0,0,0.25)' }}
+          className="font-heading font-black text-transparent text-[11vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] tracking-tighter leading-none whitespace-nowrap"
+          style={{ WebkitTextStroke: '4px var(--color-foreground)' }}
         >
           Prithika Kannan
         </div>
@@ -26,15 +23,15 @@ export function Footer() {
               Product-focused Software Engineer crafting data-driven experiences grounded in proven engineering traditions.
             </p>
             <div className="flex gap-6">
-              <a href="mailto:kpprithika75@gmail.com" className="p-3 border-[3px] border-foreground bg-primary rounded-md text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
+              <a href="mailto:kpprithika75@gmail.com" className="p-3 border-[3px] border-foreground bg-primary rounded-none text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
                 <Mail className="w-6 h-6" />
                 <span className="sr-only">Email</span>
               </a>
-              <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer" className="p-3 border-[3px] border-foreground bg-primary rounded-md text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
+              <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer" className="p-3 border-[3px] border-foreground bg-primary rounded-none text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
                 <Code2 className="w-6 h-6" />
                 <span className="sr-only">GitHub</span>
               </a>
-              <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer" className="p-3 border-[3px] border-foreground bg-primary rounded-md text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
+              <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer" className="p-3 border-[3px] border-foreground bg-primary rounded-none text-foreground hover:-translate-y-1 hover:shadow-brutal transition-all">
                 <Briefcase className="w-6 h-6" />
                 <span className="sr-only">LinkedIn</span>
               </a>

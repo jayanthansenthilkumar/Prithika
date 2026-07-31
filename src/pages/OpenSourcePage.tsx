@@ -61,10 +61,10 @@ export default function OpenSourcePage() {
         <meta name="description" content="Explore Prithika Kannan's open source contributions, GitHub repositories, and community involvement." />
       </Helmet>
       
-      <section className="pt-24 pb-12 border-b-[3px] border-foreground bg-primary">
+      <section className="pt-24 pb-12 border-b-[3px] border-foreground bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-md bg-background text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-none bg-primary text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
               <Terminal className="w-4 h-4" />
               <span>prithika/open-source</span>
             </div>
@@ -73,7 +73,7 @@ export default function OpenSourcePage() {
               Building in the open.
             </h1>
             
-            <p className="text-lg text-foreground font-mono font-bold leading-relaxed mb-8 border-[3px] border-foreground rounded-xl bg-background p-4 shadow-brutal">
+            <p className="text-lg text-foreground font-mono font-bold leading-relaxed mb-8 border-[3px] border-foreground rounded-none bg-background p-4 shadow-brutal">
               I believe in the power of open-source software. Contributing to the community helps me learn, share knowledge, and build better software together.
             </p>
 
@@ -81,7 +81,7 @@ export default function OpenSourcePage() {
               href="https://github.com/prithikakannan" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-background border-[3px] border-foreground rounded-md text-foreground px-6 py-3 font-mono font-bold text-sm uppercase shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg transition-all"
+              className="inline-flex items-center gap-3 bg-background border-[3px] border-foreground rounded-none text-foreground px-6 py-3 font-mono font-bold text-sm uppercase shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg transition-all"
             >
               <GithubIcon className="w-5 h-5" />
               Follow me on GitHub
@@ -107,11 +107,11 @@ export default function OpenSourcePage() {
       {/* Repositories Section */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-black text-foreground mb-12 font-heading uppercase tracking-tighter">Highlighted <span className="bg-primary px-2 border-[3px] border-foreground rounded-md shadow-[2px_2px_0px_0px_var(--color-foreground)]">Repositories</span></h2>
+          <h2 className="text-4xl font-black text-foreground mb-12 font-heading uppercase tracking-tighter">Highlighted <span className="bg-primary px-2 border-[3px] border-foreground rounded-none shadow-[2px_2px_0px_0px_var(--color-foreground)]">Repositories</span></h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {contributions.map((repo, idx) => (
-              <div key={idx} className="flex flex-col h-full bg-background border-[3px] border-foreground rounded-xl p-8 shadow-[4px_4px_0px_0px_var(--color-foreground)] hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] hover:-translate-y-2 hover:-translate-x-2 transition-all relative group">
+              <div key={idx} className="flex flex-col h-full bg-background border-[3px] border-foreground rounded-none p-8 shadow-[4px_4px_0px_0px_var(--color-foreground)] hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] hover:-translate-y-2 hover:-translate-x-2 transition-all relative group">
                 <div className="flex justify-between items-start mb-6 gap-2">
                   <div className="flex items-start gap-3 text-foreground">
                     <GithubIcon className="w-6 h-6 mt-1 shrink-0" />
@@ -119,7 +119,7 @@ export default function OpenSourcePage() {
                       {repo.repo.split('/').pop()}
                     </a>
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase bg-primary text-foreground px-2 py-1 border-[3px] border-foreground rounded-sm shrink-0">
+                  <span className="text-[10px] font-mono font-bold uppercase bg-primary text-foreground px-2 py-1 border-[3px] border-foreground rounded-none shrink-0">
                     {repo.type}
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function OpenSourcePage() {
                 </div>
 
                 {/* Hover overlay link icon */}
-                <a href="#" className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-foreground bg-primary border-[3px] border-foreground rounded-md p-2 shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+                <a href="#" className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-foreground bg-primary border-[3px] border-foreground rounded-none p-2 shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
                   <ExternalLink className="w-5 h-5" />
                 </a>
               </div>

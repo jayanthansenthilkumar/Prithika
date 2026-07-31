@@ -14,13 +14,13 @@ export default function AboutPage() {
       <section className="pt-24 pb-12 border-b-[3px] border-foreground bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-md bg-primary text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-none bg-primary text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
               <Terminal className="w-4 h-4" />
               <span>prithika/about</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-black text-foreground mb-8 tracking-tighter font-heading uppercase leading-tight">
-              Bridging analytical focus with creative <span className="bg-primary px-2 border-[3px] border-foreground rounded-md shadow-[4px_4px_0px_0px_var(--color-foreground)] inline-block">problem-solving.</span>
+              Bridging analytical focus with creative <span className="bg-primary px-2 border-[3px] border-foreground rounded-none shadow-[4px_4px_0px_0px_var(--color-foreground)] inline-block">problem-solving.</span>
             </h1>
             
             <p className="text-lg text-foreground font-mono font-bold leading-relaxed border-l-[3px] border-foreground pl-4">

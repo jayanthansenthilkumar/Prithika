@@ -26,7 +26,7 @@ export default function ResumePage() {
             href={resumeUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 md:flex-none flex items-center justify-center bg-background border-[3px] border-foreground rounded-md text-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all font-bold uppercase px-4 py-2 font-mono text-xs"
+            className="flex-1 md:flex-none flex items-center justify-center bg-background border-[3px] border-foreground rounded-none text-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all font-bold uppercase px-4 py-2 font-mono text-xs"
           >
             <ExternalLink className="mr-2 h-4 w-4" />
             Open in New Tab
@@ -34,7 +34,7 @@ export default function ResumePage() {
           <a 
             href={resumeUrl} 
             download="Resume_Prithika.pdf"
-            className="flex-1 md:flex-none flex items-center justify-center bg-primary border-[3px] border-foreground rounded-md text-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all font-bold uppercase px-4 py-2 font-mono text-xs"
+            className="flex-1 md:flex-none flex items-center justify-center bg-primary border-[3px] border-foreground rounded-none text-foreground shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all font-bold uppercase px-4 py-2 font-mono text-xs"
           >
             <Download className="mr-2 h-4 w-4" />
             Download PDF
@@ -42,7 +42,7 @@ export default function ResumePage() {
         </div>
       </div>
 
-      <div className="w-full h-[70vh] md:h-[80vh] bg-background rounded-xl overflow-hidden border-[3px] border-foreground shadow-brutal-lg relative">
+      <div className="w-full h-[70vh] md:h-[80vh] bg-background rounded-none overflow-hidden border-[3px] border-foreground shadow-brutal-lg relative">
         <object
           data={resumeUrl}
           type="application/pdf"
@@ -55,7 +55,7 @@ export default function ResumePage() {
             <a 
               href={resumeUrl} 
               download="Resume_Prithika.pdf"
-              className="flex items-center justify-center bg-primary border-[3px] border-foreground rounded-md text-foreground shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg transition-all font-bold uppercase px-6 py-3 font-mono"
+              className="flex items-center justify-center bg-primary border-[3px] border-foreground rounded-none text-foreground shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg transition-all font-bold uppercase px-6 py-3 font-mono"
             >
               <Download className="mr-2 h-4 w-4" />
               Download PDF Instead
