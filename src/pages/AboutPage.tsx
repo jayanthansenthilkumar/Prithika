@@ -3,7 +3,7 @@ import { Terminal } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="fade-in" style={{ padding: '0 2rem' }}>
+    <div className="fade-in">
       <Helmet>
         <title>About Prithika Kannan | Background & Education</title>
       </Helmet>
@@ -19,7 +19,7 @@ export default function AboutPage() {
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
         <p style={{ fontSize: '1.05rem', color: 'var(--text-primary)', lineHeight: 1.8, margin: 0, fontFamily: 'var(--font-serif)' }}>
-          I am a product-focused Software Engineer based in Madurai, crafting data-driven experiences grounded in proven engineering traditions. 
+          I am a product-focused Software Engineer based in India, crafting data-driven experiences grounded in proven engineering traditions. 
           My technical journey began with an intense curiosity about how scalable systems could be built from the ground up to support thousands of concurrent operations seamlessly.
         </p>
         <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0, fontFamily: 'var(--font-serif)' }}>
@@ -34,7 +34,7 @@ export default function AboutPage() {
       <div style={{ marginTop: '4rem', paddingTop: '4rem', borderTop: '1px solid var(--border-subtle)' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '2rem', fontFamily: 'var(--font-sans)' }}>Experience & Education</h2>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem' }}>
           <div className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem' }}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '0.5rem', fontFamily: 'var(--font-sans)' }}>RSUN Technologies</h3>
             <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '1.5rem', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Software Engineer Intern • Present</div>

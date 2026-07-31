@@ -26,7 +26,7 @@ export default function SkillsPage() {
   ];
 
   return (
-    <div className="fade-in" style={{ padding: '0 2rem' }}>
+    <div className="fade-in">
       <Helmet>
         <title>Technical Skills | Prithika Kannan</title>
       </Helmet>
@@ -46,7 +46,7 @@ export default function SkillsPage() {
         Rather than just learning syntax, I focus on understanding the underlying paradigms of these tools to utilize them most effectively.
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem' }}>
         {skillCategories.map((category, idx) => (
           <div key={idx} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-primary)', marginBottom: '1.5rem', fontWeight: 500 }}>

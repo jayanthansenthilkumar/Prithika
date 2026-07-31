@@ -37,7 +37,7 @@ export default function OpenSourcePage() {
   ];
 
   return (
-    <div className="fade-in" style={{ padding: '0 2rem' }}>
+    <div className="fade-in">
       <Helmet>
         <title>Open Source & Community | Prithika Kannan</title>
       </Helmet>
@@ -83,7 +83,7 @@ export default function OpenSourcePage() {
       </a>
 
       {/* Stats Section */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
         {stats.map((stat, idx) => (
           <div key={idx} style={{ padding: '1.5rem', backgroundColor: 'var(--bg-sidebar)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
             <div style={{ fontSize: '2rem', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '0.5rem', fontFamily: 'var(--font-sans)' }}>{stat.value}</div>
@@ -97,7 +97,7 @@ export default function OpenSourcePage() {
         Highlighted Repositories
       </h2>
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem' }}>
         {contributions.map((repo, idx) => (
           <div key={idx} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>

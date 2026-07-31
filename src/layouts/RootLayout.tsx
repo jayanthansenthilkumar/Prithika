@@ -15,6 +15,11 @@ export default function RootLayout() {
       const timeout = setTimeout(() => {
         setDisplayLocation(location);
         setIsTransitioning(false);
+        // Smoothly scroll back to the top of the content area on navigation
+        const mainEl = document.querySelector('.app-main');
+        if (mainEl) {
+          mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       }, 300); // match --transition-normal
       return () => clearTimeout(timeout);
     }
@@ -34,6 +39,10 @@ export default function RootLayout() {
         >
           {/* We provide a key to Outlet based on pathname so it fully remounts/rerenders the new page for animations */}
           <Outlet key={displayLocation.pathname} />
+          
+          <footer style={{ marginTop: 'auto', paddingTop: '2rem', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '13px', fontFamily: 'var(--font-sans)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            © {new Date().getFullYear()} Prithika Kannan
+          </footer>
         </div>
       </main>
     </div>

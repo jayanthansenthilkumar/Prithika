@@ -53,9 +53,12 @@ export function Sidebar() {
           top: 0, 
           left: 0, 
           zIndex: 40,
-          padding: '1rem',
+          padding: '0.75rem',
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          backgroundColor: isMobile ? 'var(--bg-main)' : 'transparent',
+          width: isMobile ? '100%' : 'auto',
+          borderBottom: isMobile ? '1px solid var(--border-subtle)' : 'none'
         }}>
           <button 
             onClick={() => isMobile ? setIsMobileOpen(true) : setIsDesktopCollapsed(false)} 
@@ -86,9 +89,9 @@ export function Sidebar() {
       <aside 
         className={`app-sidebar ${isMobile && !isMobileOpen ? 'collapsed' : isMobile && isMobileOpen ? 'open' : ''}`}
         style={{ 
-          width: collapsed ? '0px' : '260px',
+          width: isMobile ? '260px' : (collapsed ? '0px' : '260px'),
           borderRight: collapsed ? 'none' : '1px solid var(--border-subtle)',
-          transform: collapsed ? 'translateX(-100%)' : 'translateX(0)',
+          transform: isMobile ? (isMobileOpen ? 'translateX(0)' : 'translateX(-100%)') : (collapsed ? 'translateX(-100%)' : 'translateX(0)'),
           position: isMobile ? 'fixed' : 'relative',
           zIndex: isMobile ? 50 : 10,
           height: '100vh',

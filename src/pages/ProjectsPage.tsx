@@ -4,7 +4,7 @@ import { projects } from "@/data/projects";
 
 export default function ProjectsPage() {
   return (
-    <div className="fade-in" style={{ padding: '0 2rem' }}>
+    <div className="fade-in">
       <Helmet>
         <title>Portfolio Projects | Prithika Kannan - Software Engineer</title>
       </Helmet>
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
               {project.description}
             </p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem', marginBottom: '2rem' }}>
               <div>
                 <strong style={{ fontSize: '1.05rem', color: 'var(--text-primary)', display: 'block', marginBottom: '0.75rem', fontFamily: 'var(--font-sans)', fontWeight: 600 }}>The Problem context:</strong>
                 <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', margin: 0, fontFamily: 'var(--font-serif)', lineHeight: 1.7 }}>

@@ -24,21 +24,24 @@ export default function ResumePage() {
         Below you can view my full resume. For a quick reference of my skills and tech stack, please visit the Skills section, or explore the Case Studies to see how I apply these concepts in production.
       </p>
         
-      <div style={{ display: 'flex', gap: '1rem', marginBottom: '4rem' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '4rem', width: '100%' }}>
         <a 
           href={resumeUrl} 
           target="_blank" 
           rel="noopener noreferrer"
           style={{
+            flex: 1,
             display: 'inline-flex',
             alignItems: 'center',
+            justifyContent: 'center',
+            whiteSpace: 'nowrap',
             gap: '0.5rem',
             backgroundColor: 'var(--text-primary)',
             color: 'var(--bg-main)',
-            padding: '1rem 2rem',
+            padding: '0.875rem 0.5rem',
             borderRadius: 'var(--radius-md)',
             fontWeight: 500,
-            fontSize: '15px',
+            fontSize: '14px',
             textDecoration: 'none',
             fontFamily: 'var(--font-sans)',
             transition: 'opacity var(--transition-fast)'
@@ -52,16 +55,19 @@ export default function ResumePage() {
           href={resumeUrl} 
           download="Resume_Prithika.pdf"
           style={{
+            flex: 1,
             display: 'inline-flex',
             alignItems: 'center',
+            justifyContent: 'center',
+            whiteSpace: 'nowrap',
             gap: '0.5rem',
             backgroundColor: 'transparent',
             color: 'var(--text-primary)',
-            padding: '1rem 2rem',
+            padding: '0.875rem 0.5rem',
             borderRadius: 'var(--radius-md)',
             border: '1px solid var(--border-subtle)',
             fontWeight: 500,
-            fontSize: '15px',
+            fontSize: '14px',
             textDecoration: 'none',
             fontFamily: 'var(--font-sans)',
             transition: 'background-color var(--transition-fast)'

@@ -6,20 +6,20 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <div className="fade-in" style={{ padding: '0 2rem', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+    <div className="fade-in" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
       <Helmet>
         <title>Contact Prithika Kannan | Software Engineer</title>
       </Helmet>
       
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-tertiary)', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-tertiary)', marginBottom: '1rem' }}>
         <span style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>{`>_ prithika/contact`}</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '2rem', marginBottom: '4rem', alignItems: 'stretch' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '1.5rem', marginBottom: '0', alignItems: 'stretch' }}>
         
         {/* Left Column: Form */}
-        <div style={{ backgroundColor: 'var(--bg-sidebar)', padding: '3.5rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column' }}>
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '2.5rem', fontFamily: 'var(--font-sans)', letterSpacing: '-0.02em' }}>
+        <div style={{ backgroundColor: 'var(--bg-sidebar)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column' }}>
+          <h1 style={{ fontSize: '2.25rem', fontWeight: 600, color: 'var(--text-primary)', marginBottom: '1.5rem', fontFamily: 'var(--font-sans)', letterSpacing: '-0.02em' }}>
             Send a Message
           </h1>
 
@@ -32,9 +32,9 @@ export default function ContactPage() {
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', fontFamily: 'var(--font-serif)', lineHeight: 1.6 }}>Thank you for reaching out! Your message has been securely recorded. I will review it and get back to you shortly.</p>
             </div>
           ) : (
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }} onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }} onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
               
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Recruiter Name</label>
                   <input 
@@ -56,7 +56,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Company Name</label>
                   <input 
@@ -81,7 +81,7 @@ export default function ContactPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
                 <label style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Message / Job Details</label>
                 <textarea 
-                  rows={5}
+                  rows={3}
                   placeholder="Hi Prithika, we're looking for an Engineer to join our team to work on..."
                   required
                   style={{ ...inputStyle, resize: 'vertical' }}
@@ -98,13 +98,13 @@ export default function ContactPage() {
                   gap: '0.5rem',
                   backgroundColor: 'var(--text-primary)',
                   color: 'var(--bg-main)',
-                  padding: '1.25rem',
+                  padding: '1rem',
                   borderRadius: 'var(--radius-md)',
                   fontWeight: 500,
                   fontSize: '15px',
                   fontFamily: 'var(--font-sans)',
                   transition: 'opacity var(--transition-fast)',
-                  marginTop: '1.5rem',
+                  marginTop: '0.5rem',
                   border: 'none',
                   cursor: 'pointer'
                 }}
@@ -118,30 +118,30 @@ export default function ContactPage() {
         </div>
 
         {/* Right Column: Maps and Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', height: '100%' }}>
           
           {/* Map Container */}
-          <div style={{ position: 'relative', flexGrow: 1, minHeight: '350px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-sidebar)' }}>
+          <div style={{ position: 'relative', flexGrow: 1, minHeight: '220px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-sidebar)' }}>
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125766.19575828557!2d78.04042858100588!3d9.91783515438865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c582b1189633%3A0x559475fc1908f0!2sMadurai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps?q=Marandahalli,+Tamil+Nadu&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0, filter: 'grayscale(100%) contrast(1.2) opacity(0.8)' }} 
               allowFullScreen={false} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              title="Madurai Location"
+              title="Marandahalli Location"
             ></iframe>
             
             {/* Floating Location Card */}
             <div style={{ 
               position: 'absolute', 
-              bottom: '1.5rem', 
+              bottom: '1rem', 
               left: '50%', 
               transform: 'translateX(-50%)',
               width: '85%',
               backgroundColor: 'var(--bg-main)', 
-              padding: '1.25rem', 
+              padding: '1rem', 
               borderRadius: 'var(--radius-md)', 
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
               border: '1px solid var(--border-subtle)',
@@ -162,8 +162,8 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Info Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', flexShrink: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1rem', flexShrink: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
               <div style={{ padding: '0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-md)', color: 'var(--claude-orange)' }}>
                 <Mail size={20} />
               </div>
@@ -173,7 +173,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1.5rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', backgroundColor: 'var(--bg-main)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
               <div style={{ padding: '0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-md)', color: 'var(--claude-orange)' }}>
                 <MessageSquare size={20} />
               </div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
 
 const inputStyle = {
   width: '100%',
-  padding: '0.875rem 1rem', 
+  padding: '0.75rem 1rem', 
   borderRadius: 'var(--radius-sm)', 
   border: '1px solid var(--border-subtle)', 
   backgroundColor: 'var(--bg-main)', 
