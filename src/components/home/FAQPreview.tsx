@@ -24,37 +24,37 @@ const faqs = [
 
 export function FAQPreview() {
   return (
-    <section className="py-24 border-b border-gray-200 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section >
+      <div >
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-2 mb-4">
-              <HelpCircle className="w-5 h-5 text-blue-600" />
-              <h2 className="text-3xl font-bold text-gray-900 tracking-tight font-serif italic">FAQ</h2>
+        <div >
+          <div >
+            <div >
+              <HelpCircle  />
+              <h2 >FAQ</h2>
             </div>
-            <p className="text-gray-600 text-sm font-mono mb-8">
+            <p >
               Everything you need to know about our technology, security posture, and deployment models.
             </p>
             <Link to="/contact">
-              <Button variant="outline" className="rounded-sm font-mono text-xs border-gray-300 bg-white text-gray-700 shadow-sm hover:bg-gray-50">
-                View All FAQs <ArrowRight className="ml-2 w-3 h-3" />
+              <Button variant="outline" >
+                View All FAQs <ArrowRight  />
               </Button>
             </Link>
           </div>
           
-          <div className="lg:col-span-8">
-            <div className="border border-gray-200 rounded-sm bg-white shadow-sm overflow-hidden">
-              <div className="px-4 py-3 bg-gray-50 border-b border-gray-200 flex gap-2">
-                <span className="text-[10px] font-mono text-gray-500 font-semibold">austral.config.json</span>
+          <div >
+            <div >
+              <div >
+                <span >austral.config.json</span>
               </div>
-              <Accordion className="w-full">
+              <Accordion >
                 {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-gray-100 px-6 last:border-0">
-                    <AccordionTrigger className="text-left text-sm font-bold text-gray-900 font-serif hover:text-blue-600 hover:no-underline py-5">
+                  <AccordionItem key={index} value={`item-${index}`} >
+                    <AccordionTrigger >
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 text-xs font-mono leading-relaxed pb-6">
+                    <AccordionContent >
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

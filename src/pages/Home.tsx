@@ -4,7 +4,7 @@ import { TechnologyStack } from "@/components/home/TechnologyStack";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div >
       <Helmet>
         <title>Prithika Kannan | Full-Stack Software Engineer & ML Developer</title>
         <meta name="description" content="Welcome to the portfolio of Prithika Kannan. Discover my technical skills in Python, React, Flask, and Machine Learning, and explore my full-stack engineering projects." />
@@ -15,7 +15,7 @@ export default function Home() {
       <TechnologyStack />
       
       {/* Spacer before footer */}
-      <div className="py-12"></div>
+      <div ></div>
     </div>
   );
 }

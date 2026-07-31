@@ -27,31 +27,31 @@ const phases = [
 
 export function Process() {
   return (
-    <section className="py-24 border-b border-gray-200 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section >
+      <div >
         
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif italic">Engagement Model</h2>
-          <p className="text-sm font-mono text-gray-600">
+        <div >
+          <h2 >Engagement Model</h2>
+          <p >
             A rigorous, engineering-first approach to deploying AI in production.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-gray-200 border border-gray-200 shadow-sm rounded-sm overflow-hidden">
+        <div >
           {phases.map((phase, index) => (
-            <div key={index} className="bg-white p-6 relative hover:bg-gray-50 transition-colors h-full flex flex-col">
-              <div className="text-4xl font-bold text-gray-200 font-serif italic mb-4">
+            <div key={index} >
+              <div >
                 {phase.step}
               </div>
               
-              <h3 className="text-base font-bold text-gray-900 mb-3 font-serif">{phase.title}</h3>
-              <p className="text-xs font-mono text-gray-600 leading-relaxed mb-6 flex-grow">
+              <h3 >{phase.title}</h3>
+              <p >
                 {phase.description}
               </p>
               
-              <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-[10px] font-mono text-gray-400 uppercase">Estimated Timeline</span>
-                <span className="text-[10px] font-mono text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded-sm border border-blue-100">{phase.duration}</span>
+              <div >
+                <span >Estimated Timeline</span>
+                <span >{phase.duration}</span>
               </div>
             </div>
           ))}
