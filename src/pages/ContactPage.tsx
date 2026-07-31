@@ -96,7 +96,7 @@ export default function ContactPage() {
                   justifyContent: 'center',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  backgroundColor: '#222222',
+                  backgroundColor: 'var(--text-primary)',
                   color: 'var(--bg-main)',
                   padding: '1.25rem',
                   borderRadius: 'var(--radius-md)',

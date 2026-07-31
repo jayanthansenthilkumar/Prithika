@@ -12,7 +12,9 @@ import {
   Search,
   PanelLeftClose,
   PanelLeft,
-  Sparkles
+  Sparkles,
+  Moon,
+  Sun
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -20,6 +22,12 @@ export function Sidebar() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDesktopCollapsed, setIsDesktopCollapsed] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
+  
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    setIsDarkMode(isDark);
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -84,7 +92,7 @@ export function Sidebar() {
           position: isMobile ? 'fixed' : 'relative',
           zIndex: isMobile ? 50 : 10,
           height: '100vh',
-          backgroundColor: '#F9F9F8', // Matching the Claude exact sidebar color
+          backgroundColor: 'var(--bg-sidebar)', // Matching the Claude exact sidebar color
           transition: 'transform var(--transition-normal), width var(--transition-normal)',
           overflow: 'hidden',
           display: 'flex',
@@ -99,7 +107,7 @@ export function Sidebar() {
               fontFamily: 'var(--font-serif)', 
               fontWeight: 600, 
               fontSize: '22px', 
-              color: 'var(--claude-charcoal)',
+              color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
               display: 'flex',
               alignItems: 'center',
@@ -167,19 +175,19 @@ export function Sidebar() {
           </nav>
 
           {/* Bottom User Profile Section */}
-          <div style={{ padding: '0.75rem', borderTop: '1px solid var(--border-subtle)', backgroundColor: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ padding: '0.75rem', borderTop: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-main)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#333333', color: '#FFFFFF', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '14px', fontWeight: 600 }}>
+              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--text-primary)', color: 'var(--bg-main)', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '14px', fontWeight: 600 }}>
                 PK
               </div>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: '14.5px', fontWeight: 500, color: '#1A1A1A', lineHeight: 1.2 }}>Prithika K</div>
+                <div style={{ fontSize: '14.5px', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.2 }}>Prithika K</div>
                 <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>Free plan</div>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '0.25rem' }}>
-              <button style={{ ...iconButtonStyle, border: '1px solid var(--border-subtle)', borderRadius: '6px' }} title="Download App">
-                <Download size={16} strokeWidth={1.5} />
+              <button onClick={toggleTheme} style={{ ...iconButtonStyle, border: '1px solid var(--border-subtle)', borderRadius: '6px' }} title="Toggle Theme">
+                {isDarkMode ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
               </button>
               <button style={{ ...iconButtonStyle, border: '1px solid var(--border-subtle)', borderRadius: '6px' }}>
                 <ChevronsUpDown size={14} strokeWidth={1.5} color="var(--text-secondary)" />

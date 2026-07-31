@@ -46,20 +46,25 @@
   }
 
   .dark {
-    /* Colors - Dark Mode (Claude Inspired) */
-    --bg-main: #1E1E1E;
-    --bg-sidebar: #191919;
+    /* Colors - Dark Mode (Claude Exact Matches) */
+    --bg-main: #1A1A1A;
+    --bg-sidebar: #131313;
     --bg-hover: #2A2A2A;
     --bg-message: #2D2D2D;
     
-    --text-primary: #E6E6E6;
-    --text-secondary: #A0A0A0;
-    --text-tertiary: #777777;
+    /* Claude Brand Dual Colors (Dark Mode variations) */
+    --claude-orange: #D97757;
+    --claude-beige: #2A2A2A;
+    --claude-charcoal: #E6E6E6;
+    
+    --text-primary: var(--claude-charcoal);
+    --text-secondary: #999999;
+    --text-tertiary: #666666;
     
     --border-subtle: #333333;
-    --border-hover: #444444;
+    --border-hover: #4D4D4D;
     
-    --accent: #E07A5F;
+    --accent: var(--claude-orange);
     --accent-hover: #F28C71;
   }
 }
