@@ -1,10 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { HeroSection } from "@/components/home/HeroSection";
-import { TechnologyStack } from "@/components/home/TechnologyStack";
 
 export default function Home() {
   return (
-    <div >
+    <div className="fade-in">
       <Helmet>
         <title>Prithika Kannan | Full-Stack Software Engineer & ML Developer</title>
         <meta name="description" content="Welcome to the portfolio of Prithika Kannan. Discover my technical skills in Python, React, Flask, and Machine Learning, and explore my full-stack engineering projects." />
@@ -12,10 +11,6 @@ export default function Home() {
       </Helmet>
       
       <HeroSection />
-      <TechnologyStack />
-      
-      {/* Spacer before footer */}
-      <div ></div>
     </div>
   );
 }

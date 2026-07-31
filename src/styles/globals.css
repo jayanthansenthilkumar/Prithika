@@ -1,160 +1,228 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-  --font-sans:
-    "Geist",
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-mono:
-    "Geist Mono",
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    "Liberation Mono",
-    "Courier New",
-    monospace;
-
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
-
-  --animate-accordion-down: accordion-down 0.2s ease-out;
-  --animate-accordion-up: accordion-up 0.2s ease-out;
-
-  @keyframes accordion-down {
-    from {
-      height: 0;
-    }
-    to {
-      height: var(--radix-accordion-content-height);
-    }
-  }
-  @keyframes accordion-up {
-    from {
-      height: var(--radix-accordion-content-height);
-    }
-    to {
-      height: 0;
-    }
-  }
-}
-
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
-}
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Colors - Light Mode (Claude Exact Matches) */
+    --bg-main: #FFFFFF;
+    --bg-sidebar: #F9F9F8;
+    --bg-hover: #EFEFEF;
+    --bg-message: #F3F3F3;
+    
+    /* Claude Brand Dual Colors */
+    --claude-orange: #D97757;
+    --claude-beige: #EAE5DB;
+    --claude-charcoal: #1A1A1A;
+    
+    --text-primary: var(--claude-charcoal);
+    --text-secondary: #555555;
+    --text-tertiary: #8B8B8B;
+    
+    --border-subtle: #E6E6E6;
+    --border-hover: #CCCCCC;
+    
+    --accent: var(--claude-orange); 
+    --accent-hover: #C56547;
+    
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, serif;
+    --font-mono: "Söhne Mono", "Geist Mono", "SFMono-Regular", Consolas, Menlo, monospace;
+    
+    /* Spacing & Layout */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 0px;
+    --content-max-width: 100%; /* Uses all screen space as requested */
+    
+    /* Animation Timings */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+    --transition-slow: 600ms ease-out;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* Colors - Dark Mode (Claude Inspired) */
+    --bg-main: #1E1E1E;
+    --bg-sidebar: #191919;
+    --bg-hover: #2A2A2A;
+    --bg-message: #2D2D2D;
+    
+    --text-primary: #E6E6E6;
+    --text-secondary: #A0A0A0;
+    --text-tertiary: #777777;
+    
+    --border-subtle: #333333;
+    --border-hover: #444444;
+    
+    --accent: #E07A5F;
+    --accent-hover: #F28C71;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 15px; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Base App Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-subtle);
+  height: 100%;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal), width var(--transition-normal), opacity var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+  transform: translateX(-100%);
+  opacity: 0;
+  border-right: none;
+}
+
+.app-main {
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat-like Content Wrapper */
+.content-wrapper {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Smooth Fade In Utilities */
+.fade-in {
+  animation: fadeIn var(--transition-slow) forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  body {
-    @apply bg-background text-foreground;
+}
+
+/* Interactive Elements */
+.conversational-block {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  transition: background-color var(--transition-fast);
+}
+
+.conversational-block:hover {
+  background-color: var(--bg-hover);
+}
+
+/* Sidebar Nav styling */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.125rem 0.5rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  font-size: 14px;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background-color: var(--claude-beige);
+  color: var(--claude-orange);
+  font-weight: 600;
+}
+
+/* Scrollbar Styling (Minimalist) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .app-sidebar {
+    position: absolute;
+    z-index: 50;
+    transform: translateX(-100%);
+  }
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+  .content-wrapper {
+    padding: 2rem 1rem 4rem;
   }
 }
