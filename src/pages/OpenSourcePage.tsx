@@ -61,29 +61,29 @@ export default function OpenSourcePage() {
         <meta name="description" content="Explore Prithika Kannan's open source contributions, GitHub repositories, and community involvement." />
       </Helmet>
       
-      <section className="pt-24 pb-12 border-b border-gray-200 bg-transparent">
+      <section className="pt-24 pb-12 border-b-[3px] border-foreground bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-gray-200 bg-white rounded-sm text-xs font-mono text-gray-500 shadow-sm">
-              <Terminal className="w-3 h-3" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-md bg-background text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+              <Terminal className="w-4 h-4" />
               <span>prithika/open-source</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight font-serif italic">
+            <h1 className="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tighter font-heading uppercase">
               Building in the open.
             </h1>
             
-            <p className="text-lg text-gray-600 font-mono leading-relaxed mb-8">
+            <p className="text-lg text-foreground font-mono font-bold leading-relaxed mb-8 border-[3px] border-foreground rounded-xl bg-background p-4 shadow-brutal">
               I believe in the power of open-source software. Contributing to the community helps me learn, share knowledge, and build better software together.
             </p>
 
             <a 
-              href="https://github.com/" 
+              href="https://github.com/prithikakannan" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-md font-mono text-sm hover:bg-gray-800 transition-colors shadow-sm"
+              className="inline-flex items-center gap-3 bg-background border-[3px] border-foreground rounded-md text-foreground px-6 py-3 font-mono font-bold text-sm uppercase shadow-brutal hover:-translate-y-1 hover:shadow-brutal-lg transition-all"
             >
-              <GithubIcon className="w-4 h-4" />
+              <GithubIcon className="w-5 h-5" />
               Follow me on GitHub
             </a>
           </div>
@@ -91,13 +91,13 @@ export default function OpenSourcePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 border-b border-gray-200 bg-gray-50">
+      <section className="py-16 border-b-[3px] border-foreground bg-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-3xl font-bold text-gray-900 font-serif mb-1">{stat.value}</div>
-                <div className="text-xs font-mono text-gray-500 uppercase tracking-wider">{stat.label}</div>
+              <div key={idx} className="text-center group">
+                <div className="text-4xl md:text-5xl font-black text-background font-heading mb-2 group-hover:text-primary transition-colors">{stat.value}</div>
+                <div className="text-xs font-mono font-bold text-primary uppercase tracking-widest">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -105,47 +105,47 @@ export default function OpenSourcePage() {
       </section>
 
       {/* Repositories Section */}
-      <section className="py-20">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-10 font-serif italic">Highlighted Repositories</h2>
+          <h2 className="text-4xl font-black text-foreground mb-12 font-heading uppercase tracking-tighter">Highlighted <span className="bg-primary px-2 border-[3px] border-foreground rounded-md shadow-[2px_2px_0px_0px_var(--color-foreground)]">Repositories</span></h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {contributions.map((repo, idx) => (
-              <div key={idx} className="flex flex-col h-full bg-white border border-gray-200 rounded-sm p-6 shadow-sm hover:shadow-md transition-shadow relative group">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-2 text-blue-600">
-                    <GithubIcon className="w-5 h-5" />
-                    <a href="#" className="font-mono text-sm font-bold hover:underline">
-                      {repo.repo}
+              <div key={idx} className="flex flex-col h-full bg-background border-[3px] border-foreground rounded-xl p-8 shadow-[4px_4px_0px_0px_var(--color-foreground)] hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] hover:-translate-y-2 hover:-translate-x-2 transition-all relative group">
+                <div className="flex justify-between items-start mb-6 gap-2">
+                  <div className="flex items-start gap-3 text-foreground">
+                    <GithubIcon className="w-6 h-6 mt-1 shrink-0" />
+                    <a href="#" className="font-heading font-black text-lg uppercase hover:bg-primary px-1 transition-colors border-b-2 border-transparent hover:border-foreground break-all">
+                      {repo.repo.split('/').pop()}
                     </a>
                   </div>
-                  <span className="text-[10px] font-mono uppercase bg-gray-100 text-gray-600 px-2 py-1 rounded-sm border border-gray-200">
+                  <span className="text-[10px] font-mono font-bold uppercase bg-primary text-foreground px-2 py-1 border-[3px] border-foreground rounded-sm shrink-0">
                     {repo.type}
                   </span>
                 </div>
                 
-                <p className="text-sm text-gray-600 font-mono flex-grow mb-6">
+                <p className="text-sm text-foreground font-mono font-bold flex-grow mb-8">
                   {repo.description}
                 </p>
                 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <div className="flex items-center gap-4 text-xs font-mono text-gray-500">
-                    <div className="flex items-center gap-1">
-                      <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                <div className="flex items-center justify-between mt-auto pt-6 border-t-[3px] border-foreground">
+                  <div className="flex items-center gap-6 text-sm font-mono font-bold text-foreground">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 border-[3px] border-foreground rounded-full bg-primary"></div>
                       {repo.language}
                     </div>
-                    <div className="flex items-center gap-1 hover:text-gray-900 transition-colors cursor-pointer">
-                      <Star className="w-3.5 h-3.5" /> {repo.stars}
+                    <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
+                      <Star className="w-4 h-4" /> {repo.stars}
                     </div>
-                    <div className="flex items-center gap-1 hover:text-gray-900 transition-colors cursor-pointer">
-                      <GitFork className="w-3.5 h-3.5" /> {repo.forks}
+                    <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
+                      <GitFork className="w-4 h-4" /> {repo.forks}
                     </div>
                   </div>
                 </div>
 
                 {/* Hover overlay link icon */}
-                <a href="#" className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 hover:text-blue-600">
-                  <ExternalLink className="w-4 h-4" />
+                <a href="#" className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-foreground bg-primary border-[3px] border-foreground rounded-md p-2 shadow-[2px_2px_0px_0px_var(--color-foreground)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none">
+                  <ExternalLink className="w-5 h-5" />
                 </a>
               </div>
             ))}

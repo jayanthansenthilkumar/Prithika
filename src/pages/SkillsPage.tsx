@@ -17,18 +17,20 @@ export default function SkillsPage() {
   const skillCategories = [
     {
       title: "Machine Learning & AI",
-      icon: <BrainCircuit className="w-5 h-5 text-purple-600" />,
+      icon: <BrainCircuit className="w-6 h-6 text-foreground" />,
+      bgColor: "bg-brutal-pink",
       skills: [
         { name: "Scikit-Learn", level: 85 },
         { name: "Pandas & NumPy", level: 90 },
         { name: "TensorFlow / PyTorch", level: 75 },
         { name: "NLP (NLTK, SpaCy)", level: 80 },
-        { name: "Data Visualization (Matplotlib, Seaborn)", level: 85 }
+        { name: "Data Visualization", level: 85 }
       ]
     },
     {
       title: "Backend Development",
-      icon: <Server className="w-5 h-5 text-blue-600" />,
+      icon: <Server className="w-6 h-6 text-foreground" />,
+      bgColor: "bg-brutal-blue",
       skills: [
         { name: "Python", level: 95 },
         { name: "Flask & Django", level: 85 },
@@ -39,10 +41,11 @@ export default function SkillsPage() {
     },
     {
       title: "Frontend Development",
-      icon: <Globe className="w-5 h-5 text-orange-500" />,
+      icon: <Globe className="w-6 h-6 text-foreground" />,
+      bgColor: "bg-brutal-orange",
       skills: [
         { name: "React.js", level: 85 },
-        { name: "TypeScript / JavaScript", level: 90 },
+        { name: "TypeScript / JS", level: 90 },
         { name: "HTML5 & CSS3", level: 95 },
         { name: "Tailwind CSS", level: 90 },
         { name: "Framer Motion", level: 70 }
@@ -50,7 +53,8 @@ export default function SkillsPage() {
     },
     {
       title: "Databases & Tools",
-      icon: <Database className="w-5 h-5 text-emerald-600" />,
+      icon: <Database className="w-6 h-6 text-foreground" />,
+      bgColor: "bg-brutal-green",
       skills: [
         { name: "MySQL / PostgreSQL", level: 85 },
         { name: "MongoDB", level: 80 },
@@ -68,47 +72,47 @@ export default function SkillsPage() {
         <meta name="description" content="Detailed overview of Prithika Kannan's technical skills across Machine Learning, Backend, Frontend, and Tools." />
       </Helmet>
       
-      <section className="pt-24 pb-12 border-b border-gray-200 bg-transparent">
+      <section className="pt-24 pb-12 border-b-[3px] border-foreground bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-gray-200 bg-white rounded-sm text-xs font-mono text-gray-500 shadow-sm">
-              <Terminal className="w-3 h-3" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 border-[3px] border-foreground rounded-md bg-background text-xs font-mono font-bold uppercase text-foreground shadow-brutal-lg hover:-translate-y-1 hover:-translate-x-1 transition-transform">
+              <Terminal className="w-4 h-4" />
               <span>prithika/skills</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight font-serif italic">
+            <h1 className="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tighter font-heading uppercase">
               Technical Arsenal
             </h1>
             
-            <p className="text-lg text-gray-600 font-mono leading-relaxed">
+            <p className="text-lg text-foreground font-mono font-bold leading-relaxed border-[3px] border-foreground rounded-xl bg-background p-4 shadow-brutal">
               A comprehensive breakdown of the tools, languages, and frameworks I use to build intelligent applications and scalable systems.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {skillCategories.map((category, idx) => (
-              <div key={idx} className="bg-white border border-gray-200 rounded-sm p-8 shadow-sm">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-gray-50 border border-gray-100 rounded-sm">
+              <div key={idx} className={`${category.bgColor} border-[3px] border-foreground rounded-xl p-8 shadow-brutal-lg hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[12px_12px_0px_0px_var(--color-foreground)] transition-all`}>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="p-3 border-[3px] border-foreground bg-background rounded-md shadow-[2px_2px_0px_0px_var(--color-foreground)]">
                     {category.icon}
                   </div>
-                  <h2 className="text-2xl font-bold text-gray-900 font-serif">{category.title}</h2>
+                  <h2 className="text-2xl font-black text-foreground font-heading uppercase tracking-tight">{category.title}</h2>
                 </div>
                 
                 <div className="space-y-6">
                   {category.skills.map((skill, sIdx) => (
                     <div key={sIdx}>
                       <div className="flex justify-between mb-2">
-                        <span className="text-sm font-bold text-gray-700 font-mono">{skill.name}</span>
-                        <span className="text-xs text-gray-500 font-mono">{skill.level}%</span>
+                        <span className="text-sm font-black text-foreground font-mono uppercase bg-background px-2 border-[3px] border-foreground rounded-sm">{skill.name}</span>
+                        <span className="text-sm text-foreground font-mono font-black bg-background px-2 border-[3px] border-foreground rounded-sm">{skill.level}%</span>
                       </div>
-                      <div className="w-full bg-gray-100 rounded-full h-1.5">
+                      <div className="w-full bg-background border-[3px] border-foreground h-4 rounded-md overflow-hidden shadow-[2px_2px_0px_0px_var(--color-foreground)]">
                         <div 
-                          className="bg-blue-600 h-1.5 rounded-full transition-all duration-1000 ease-out" 
+                          className="bg-foreground h-full border-r-2 border-foreground transition-all duration-1000 ease-out" 
                           style={{ width: skill.level + '%' }}
                         ></div>
                       </div>
