@@ -126,7 +126,7 @@ export default function ContactPage() {
               src="https://www.google.com/maps?q=Marandahalli,+Tamil+Nadu&output=embed" 
               width="100%" 
               height="100%" 
-              style={{ border: 0, filter: 'grayscale(100%) contrast(1.2) opacity(0.8)' }} 
+              style={{ border: 0 }} 
               allowFullScreen={false} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
