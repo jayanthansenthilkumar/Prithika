@@ -10,12 +10,8 @@ export default function RootLayout() {
 
   // Scroll to top on route change
   useEffect(() => {
-    const mainEl = document.querySelector('.app-main');
-    if (mainEl) {
-      mainEl.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // Window is the scroll container, not mainEl
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname]);
 
   return (

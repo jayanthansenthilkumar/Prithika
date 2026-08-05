@@ -4,31 +4,43 @@ import { projects } from "@/data/projects";
 import { ArrowLeft, ExternalLink, Terminal, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 export default function ProjectOverviewPage() {
   const { id } = useParams<{id: string;}>();
-  const project = projects.find((p) => p.id === id);
+  
+  // Highly robust filtering and memoization to prevent hydration mismatches and ensure instant population
+  const project = useMemo(() => {
+    if (!id) return null;
+    const sanitizedId = id.toLowerCase().trim();
+    return projects.find((p) => p.id === sanitizedId) || null;
+  }, [id]);
 
   if (!project) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-        <p className="text-zinc-400 mb-8">The project you are looking for does not exist.</p>
-        <Button asChild className="rounded-full px-8 bg-white text-zinc-950">
-          <Link to="/projects">Back to Projects</Link>
-        </Button>
-      </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 w-full"
+      >
+        <div className="glass-card p-12 rounded-3xl max-w-lg w-full relative overflow-hidden border border-red-500/10 dark:border-red-500/20">
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-500/40 via-transparent to-transparent" />
+          <AlertCircle size={48} className="text-red-500 dark:text-red-400 mx-auto mb-6 opacity-80" />
+          <h1 className="text-3xl font-bold mb-4 text-zinc-950 dark:text-white relative z-10">Project Not Found</h1>
+          <p className="text-zinc-600 dark:text-zinc-400 mb-8 text-lg relative z-10">The case study you are looking for does not exist or has been moved.</p>
+          <Button asChild size="lg" className="rounded-full px-8 relative z-10">
+            <Link to="/projects">
+              <ArrowLeft size={16} className="mr-2" /> Return to Projects
+            </Link>
+          </Button>
+        </div>
+      </motion.div>
     );
   }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className="w-full max-w-4xl mx-auto pt-6 pb-24"
-    >
+    <div className="w-full max-w-4xl mx-auto pt-6 pb-24">
       <Helmet>
         <title>{project.title} | Case Study - Prithika Kannan</title>
         <meta name="description" content={`Detailed case study for ${project.title}. Read about the problem, the solution, and the tech stack.`} />
@@ -49,9 +61,14 @@ export default function ProjectOverviewPage() {
           <span className="text-sm font-medium tracking-wide text-zinc-900 dark:text-zinc-100">prithika/projects/{project.id}</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6 text-zinc-950 dark:text-white transition-colors">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-4 text-zinc-950 dark:text-white transition-colors">
           {project.title}
         </h1>
+        {project.subtitle && (
+          <h2 className="text-2xl md:text-3xl font-medium text-zinc-800 dark:text-zinc-200 mb-6 transition-colors tracking-tight">
+            {project.subtitle}
+          </h2>
+        )}
         
         <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 leading-relaxed mb-10 text-balance transition-colors">
           {project.description}
@@ -102,6 +119,28 @@ export default function ProjectOverviewPage() {
               {project.solution}
             </p>
           </div>
+
+          {/* Features */}
+          {project.features && project.features.length > 0 && (
+            <div className="glass-card rounded-3xl p-8 md:p-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full glass flex items-center justify-center bg-blue-500/10">
+                  <Terminal size={24} className="text-blue-600 dark:text-blue-400" />
+                </div>
+                <h2 className="text-3xl font-bold text-zinc-950 dark:text-white transition-colors">Key Features</h2>
+              </div>
+              <ul className="space-y-4">
+                {project.features.map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-blue-600 dark:text-blue-400 mt-1">•</span>
+                    <span className="text-zinc-700 dark:text-zinc-300 text-lg leading-relaxed transition-colors">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Metrics Sidebar */}
@@ -121,6 +160,6 @@ export default function ProjectOverviewPage() {
           </div>
         </div>
       </section>
-    </motion.div>
+    </div>
   );
 }
