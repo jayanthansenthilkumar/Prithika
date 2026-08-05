@@ -39,7 +39,7 @@ export function Navbar() {
       <div 
         className={cn(
           "flex items-center justify-between w-full max-w-[1400px] transition-all duration-500",
-          isScrolled ? "glass rounded-full px-6 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" : "px-0"
+          isScrolled ? "glass rounded-full px-6 py-3" : "px-0"
         )}
       >
         <Link to="/" className="flex items-center gap-2 group">

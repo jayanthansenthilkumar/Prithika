@@ -9,7 +9,7 @@ export function FeaturedCaseStudies() {
   const featured = projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-32 relative w-full">
+    <section id="projects" className="py-40 relative w-full">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 w-fit mb-6">
@@ -44,7 +44,7 @@ export function FeaturedCaseStudies() {
               <div className={`w-full lg:w-2/3 relative z-0 ${isEven ? 'lg:-mr-12' : 'lg:-ml-12'}`}>
                 <div className="aspect-video w-full bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 relative group">
                   {/* Fallback pattern for now since there are no images yet */}
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500 via-transparent to-transparent group-hover:scale-110 transition-transform duration-1000" />
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500 via-transparent to-transparent group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
                   <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-2xl font-bold opacity-30">
                     {project.title.toUpperCase()} // PREVIEW
                   </div>

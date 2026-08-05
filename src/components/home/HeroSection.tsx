@@ -38,9 +38,9 @@ export function HeroSection() {
         </motion.div>
         
         <motion.div variants={itemVariants}>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] text-balance">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.85] text-balance">
             ENGINEER<span className="text-zinc-600">ING</span> <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">EXCELLENCE</span>
+            <span className="bg-gradient-to-r from-indigo-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent drop-shadow-sm">EXCELLENCE</span>
           </h1>
         </motion.div>
         
