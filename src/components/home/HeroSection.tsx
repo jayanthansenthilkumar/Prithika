@@ -51,13 +51,13 @@ export function HeroSection() {
           </p>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mt-4">
-          <Button asChild size="lg" className="rounded-full h-14 px-8 text-lg">
+        <motion.div variants={itemVariants} className="flex flex-row flex-nowrap items-center gap-3 sm:gap-4 mt-4">
+          <Button asChild size="lg" className="rounded-full h-14 px-6 sm:px-8 text-base sm:text-lg shrink-0">
             <Link to="/projects">
-              Explore Work <ArrowRight className="ml-2" size={20} />
+              Explore Work <ArrowRight className="ml-1.5 sm:ml-2" size={18} />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-lg">
+          <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-6 sm:px-8 text-base sm:text-lg shrink-0">
             <Link to="/contact">
               Get in touch
             </Link>

@@ -8,6 +8,7 @@ import Lenis from "lenis";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { Preloader } from "@/components/ui/Preloader";
 import { Helmet } from "react-helmet-async";
+import { Footer } from "@/components/layout/Footer";
 
 export default function RootLayout() {
   const location = useLocation();
@@ -79,10 +80,7 @@ export default function RootLayout() {
               <Outlet />
             </div>
             
-            <footer className="mt-32 pt-8 border-t border-black/5 dark:border-white/10 text-center text-zinc-500 text-sm pb-8 transition-colors duration-500">
-              <p>© {new Date().getFullYear()} Prithika Kannan. All rights reserved.</p>
-              <p className="mt-2">Designed with precision. Built for scale.</p>
-            </footer>
+            <Footer />
           </motion.div>
         </AnimatePresence>
       </main>
