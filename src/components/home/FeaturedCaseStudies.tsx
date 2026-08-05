@@ -1,81 +1,98 @@
-import { ArrowRight, CodeSquare } from "lucide-react";
-
+import { ArrowRight, CodeSquare, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export function FeaturedCaseStudies() {
+  // Take only the first 3 projects for the featured section
+  const featured = projects.slice(0, 3);
+
   return (
-    <section id="projects">
-      <div>
-        <div>
-          <div>
-            <div>
-              <div>
-                <CodeSquare />
-              </div>
-              <h2>Featured Projects</h2>
-            </div>
-            <p>
-              Showcasing practical applications of full-stack engineering, machine learning, and database optimization.
-            </p>
+    <section id="projects" className="py-32 relative w-full">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 w-fit mb-6">
+            <CodeSquare size={16} className="text-indigo-400" />
+            <span className="text-sm font-medium tracking-wide">Featured Work</span>
           </div>
-          <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer">
-            <button>
-              View GitHub <ArrowRight />
-            </button>
-          </a>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">Case Studies</h2>
+          <p className="text-zinc-400 mt-4 text-lg md:text-xl">
+            Showcasing practical applications of full-stack engineering, machine learning, and database optimization.
+          </p>
         </div>
+        <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" className="rounded-full px-6 h-12 border-white/20 hover:bg-white/10">
+            View GitHub <ArrowRight className="ml-2" size={16} />
+          </Button>
+        </a>
+      </div>
 
-        <div>
-          {projects.map((project) => {
-            return (
-              <div
-                key={project.title}>
-
-                
-                
-                <div>
-                  <h3>
-                    {project.title}
-                  </h3>
-                  
-                  <p>
-                    "{project.description}"
-                  </p>
-                  
-                  <div>
-                    <div>
-                      PK
-                    </div>
-                    <div>
-                      <span>Prithika Kannan</span>
-                      <span>SOFTWARE ENGINEER</span>
-                    </div>
-                  </div>
-
-                  {/* Hover overlay links */}
-                  <div>
-                    <Link to={`/projects/${project.id}`} title="Overview">
-                      <ArrowRight />
-                    </Link>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" title="Source Code">
-                      <CodeSquare />
-                    </a>
+      <div className="flex flex-col gap-32">
+        {featured.map((project, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-0`}
+            >
+              {/* Image Container (Asymmetrical & Edge-to-edge feel on mobile) */}
+              <div className={`w-full lg:w-2/3 relative z-0 ${isEven ? 'lg:-mr-12' : 'lg:-ml-12'}`}>
+                <div className="aspect-video w-full bg-zinc-900 rounded-3xl overflow-hidden border border-white/5 relative group">
+                  {/* Fallback pattern for now since there are no images yet */}
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500 via-transparent to-transparent group-hover:scale-110 transition-transform duration-1000" />
+                  <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-2xl font-bold opacity-30">
+                    {project.title.toUpperCase()} // PREVIEW
                   </div>
                 </div>
-              </div>);
+              </div>
 
-          })}
-        </div>
-        
-        <div>
-          <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer">
-            <button>
-              View GitHub <ArrowRight />
-            </button>
-          </a>
-        </div>
+              {/* Content Container (Overlapping) */}
+              <div className={`w-full lg:w-1/2 glass-card rounded-3xl p-8 md:p-12 z-10 ${isEven ? 'lg:mr-auto' : 'lg:ml-auto'}`}>
+                <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+                <p className="text-zinc-400 text-lg leading-relaxed mb-8">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {project.tags?.map(tag => (
+                    <span key={tag} className="text-xs font-mono px-3 py-1 bg-white/5 rounded-full text-zinc-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4 pt-6 border-t border-white/10">
+                  <Button asChild className="rounded-full px-6 bg-white text-zinc-950 hover:bg-zinc-200">
+                    <Link to={`/projects/${project.id}`}>
+                      View Case Study
+                    </Link>
+                  </Button>
+                  {project.link && (
+                    <Button asChild variant="outline" size="icon" className="rounded-full h-10 w-10 border-white/20 hover:bg-white/10 hover:text-white">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" title="Source Code">
+                        <ExternalLink size={18} />
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
-    </section>);
-
+      
+      <div className="mt-32 flex justify-center">
+        <Button asChild size="lg" className="rounded-full h-14 px-8 text-lg bg-zinc-800 text-white hover:bg-zinc-700">
+          <Link to="/projects">
+            View All Projects <ArrowRight className="ml-2" size={20} />
+          </Link>
+        </Button>
+      </div>
+    </section>
+  );
 }
