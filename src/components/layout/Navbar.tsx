@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,10 +44,10 @@ export function Navbar() {
         )}
       >
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-full bg-white text-zinc-950 flex items-center justify-center font-bold text-sm tracking-tighter group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-full bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 flex items-center justify-center font-bold text-sm tracking-tighter group-hover:scale-105 transition-all">
             PK
           </div>
-          <span className="font-heading font-semibold text-lg tracking-tight hidden sm:block group-hover:text-zinc-300 transition-colors">
+          <span className="font-heading font-semibold text-lg tracking-tight hidden sm:block text-zinc-900 dark:text-zinc-50 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
             Prithika Kannan
           </span>
         </Link>
@@ -58,8 +59,8 @@ export function Navbar() {
               key={link.name}
               to={link.path}
               className={cn(
-                "relative px-4 py-2 rounded-full text-sm font-medium transition-colors hover:text-white",
-                isActive(link.path) ? "text-white bg-white/10" : "text-zinc-400"
+                "relative px-4 py-2 rounded-full text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white",
+                isActive(link.path) ? "text-zinc-950 dark:text-white bg-black/5 dark:bg-white/10" : "text-zinc-600 dark:text-zinc-400"
               )}
             >
               {link.name}
@@ -67,21 +68,24 @@ export function Navbar() {
           ))}
         </nav>
         
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <Link to="/contact">
-            <Button className="rounded-full px-6 bg-white text-zinc-950 hover:bg-zinc-200 transition-colors">
+            <Button className="rounded-full px-6">
               Get in touch
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden p-2 text-zinc-300 hover:text-white"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            className="p-2 text-zinc-600 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -101,7 +105,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "text-lg font-medium p-3 rounded-xl transition-colors",
-                  isActive(link.path) ? "bg-white/10 text-white" : "text-zinc-400 hover:text-white"
+                  isActive(link.path) ? "bg-black/5 dark:bg-white/10 text-zinc-950 dark:text-white" : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
                 )}
               >
                 {link.name}
