@@ -1,26 +1,26 @@
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
+import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 
-import { cn } from "@/lib/utils"
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import { cn } from "@/lib/utils";
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
   return (
     <AccordionPrimitive.Root
       data-slot="accordion"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 function AccordionTrigger({
@@ -29,18 +29,18 @@ function AccordionTrigger({
   ...props
 }: AccordionPrimitive.Trigger.Props) {
   return (
-    <AccordionPrimitive.Header >
+    <AccordionPrimitive.Header>
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
+
+        {...props}>
         
-        {...props}
-      >
         {children}
-        <ChevronDownIcon data-slot="accordion-trigger-icon"  />
-        <ChevronUpIcon data-slot="accordion-trigger-icon"  />
+        <ChevronDownIcon data-slot="accordion-trigger-icon" />
+        <ChevronUpIcon data-slot="accordion-trigger-icon" />
       </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-  )
+    </AccordionPrimitive.Header>);
+
 }
 
 function AccordionContent({
@@ -51,16 +51,16 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Panel
       data-slot="accordion-content"
+
+      {...props}>
       
-      {...props}
-    >
-      <div
+      <div>
+
         
-      >
         {children}
       </div>
-    </AccordionPrimitive.Panel>
-  )
+    </AccordionPrimitive.Panel>);
+
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

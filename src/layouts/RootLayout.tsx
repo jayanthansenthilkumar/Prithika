@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import "@/styles/globals.css";
-import { Sidebar } from "@/components/layout/Sidebar";
+import { Navbar } from "@/components/layout/Navbar";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -16,28 +16,28 @@ export default function RootLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="app-container relative">
-      <Sidebar />
-      <main className="app-main relative z-0">
+    <div>
+      <Navbar />
+      <main>
         <AnimatePresence mode="wait">
-          <motion.div 
+          <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="content-wrapper min-h-full flex flex-col"
-          >
-            <div className="flex-1">
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+
+            
+            <div>
               <Outlet />
             </div>
             
-            <footer className="mt-12 pt-8 border-t border-[var(--border-subtle)] text-center text-[var(--text-tertiary)] text-sm font-sans flex justify-center items-center">
+            <footer>
               © {new Date().getFullYear()} Prithika Kannan. All rights reserved.
             </footer>
           </motion.div>
         </AnimatePresence>
       </main>
-    </div>
-  );
+    </div>);
+
 }

@@ -2,32 +2,32 @@ import { Briefcase, GraduationCap, Award } from "lucide-react";
 
 export function WhyChooseUs() {
   return (
-    <section id="experience" >
-      <div >
+    <section id="experience">
+      <div>
         
-        <div >
+        <div>
           
           <div>
-            <h2 >
-              Experience & <span >Background</span>
+            <h2>
+              Experience & <span>Background</span>
             </h2>
-            <p >
+            <p>
               A blend of academic foundation and practical industry experience building scalable systems.
             </p>
             
-            <div >
+            <div>
               {/* Experience */}
-              <div >
-                <div >
-                  <div >
-                    <Briefcase  />
+              <div>
+                <div>
+                  <div>
+                    <Briefcase />
                   </div>
                   <div>
-                    <h3 >RSUN Technologies</h3>
-                    <p >Madurai | June 2026</p>
+                    <h3>RSUN Technologies</h3>
+                    <p>Madurai | June 2026</p>
                   </div>
                 </div>
-                <ul >
+                <ul>
                   <li>Built scalable distributed backend with PHP & SQL, reducing latency by 30% and throughput.</li>
                   <li>Developed RESTful APIs to improve communication and system reliability by 40%.</li>
                   <li>Optimized queries and indexing, cutting processing time by 35% and enhancing performance.</li>
@@ -35,17 +35,17 @@ export function WhyChooseUs() {
               </div>
 
               {/* Education */}
-              <div >
-                <div >
-                  <div >
-                    <GraduationCap  />
+              <div>
+                <div>
+                  <div>
+                    <GraduationCap />
                   </div>
                   <div>
-                    <h3 >M. Kumarasamy College of Engineering</h3>
-                    <p >2024 - 2028</p>
+                    <h3>M. Kumarasamy College of Engineering</h3>
+                    <p>2024 - 2028</p>
                   </div>
                 </div>
-                <p >
+                <p>
                   B. Tech - Information Technology <br />
                   CGPA – 7.900 as of 3rd semester
                 </p>
@@ -54,14 +54,14 @@ export function WhyChooseUs() {
           </div>
           
           {/* Terminal / Certifications Box */}
-          <div >
-            <div >
+          <div>
+            <div>
               <span>certifications.json</span>
               <span>100%</span>
             </div>
-            <div >
-              <div >$ cat certifications.json</div>
-              <pre >
+            <div>
+              <div>$ cat certifications.json</div>
+              <pre>
 {`{
   "certifications": [
     {
@@ -81,15 +81,15 @@ export function WhyChooseUs() {
   }
 }`}
               </pre>
-              <div >
-                <span >$</span>
-                <span  />
+              <div>
+                <span>$</span>
+                <span />
               </div>
             </div>
           </div>
           
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }

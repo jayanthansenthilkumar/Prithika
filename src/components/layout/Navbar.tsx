@@ -20,60 +20,60 @@ export function Navbar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header
+    <header>
+
       
-    >
-      <div >
-        <div >
-          <Link to="/" >
-            <span >Prithika Kannan</span>
+      <div>
+        <div>
+          <Link to="/">
+            <span>Prithika Kannan</span>
           </Link>
 
-          <nav >
-            <Link to="/" >Home</Link>
-            <Link to="/about" >About</Link>
-            <Link to="/skills" >Skills</Link>
-            <Link to="/projects" >Projects</Link>
-            <Link to="/resume" >Resume</Link>
-            <Link to="/open-source" >Open Source</Link>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/skills">Skills</Link>
+            <Link to="/projects">Projects</Link>
+            <Link to="/resume">Resume</Link>
+            <Link to="/open-source">Open Source</Link>
           </nav>
         </div>
         
-        <div >
+        <div>
           <Link to="/contact">
-            <Button size="default" >
+            <Button size="default">
               Contact Me 
             </Button>
           </Link>
         </div>
 
-        <div >
+        <div>
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+
             
-          >
-            {mobileMenuOpen ? <X  /> : <Menu  />}
+            {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div >
-          <Link to="/" onClick={() => setMobileMenuOpen(false)} >Home</Link>
-          <Link to="/about" onClick={() => setMobileMenuOpen(false)} >About</Link>
-          <Link to="/skills" onClick={() => setMobileMenuOpen(false)} >Skills</Link>
-          <Link to="/projects" onClick={() => setMobileMenuOpen(false)} >Projects</Link>
-          <Link to="/resume" onClick={() => setMobileMenuOpen(false)} >Resume</Link>
-          <Link to="/open-source" onClick={() => setMobileMenuOpen(false)} >Open Source</Link>
-          <Link to="/contact" onClick={() => setMobileMenuOpen(false)} >Contact</Link>
-          <div >
-            <Link to="/contact" onClick={() => setMobileMenuOpen(false)} >
-              <Button >Contact Me</Button>
+      {mobileMenuOpen &&
+      <div>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+          <Link to="/about" onClick={() => setMobileMenuOpen(false)}>About</Link>
+          <Link to="/skills" onClick={() => setMobileMenuOpen(false)}>Skills</Link>
+          <Link to="/projects" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
+          <Link to="/resume" onClick={() => setMobileMenuOpen(false)}>Resume</Link>
+          <Link to="/open-source" onClick={() => setMobileMenuOpen(false)}>Open Source</Link>
+          <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+          <div>
+            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+              <Button>Contact Me</Button>
             </Link>
           </div>
         </div>
-      )}
-    </header>
-  );
+      }
+    </header>);
+
 }

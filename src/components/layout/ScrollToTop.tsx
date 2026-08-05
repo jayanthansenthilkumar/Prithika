@@ -12,7 +12,7 @@ export function ScrollToTop() {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   }, [pathname]);
 
@@ -33,18 +33,18 @@ export function ScrollToTop() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   };
 
   return (
     <button
       onClick={scrollToTop}
+
+      aria-label="Go to top">
       
-      aria-label="Go to top"
-    >
-      <div  />
-      <ArrowUp  />
-    </button>
-  );
+      <div />
+      <ArrowUp />
+    </button>);
+
 }

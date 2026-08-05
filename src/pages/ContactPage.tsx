@@ -23,108 +23,108 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <motion.div 
-      className="max-w-6xl w-full pb-16"
+    <motion.div
+
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
-    >
+      variants={containerVariants}>
+      
       <Helmet>
         <title>Contact Prithika Kannan | Software Engineer</title>
       </Helmet>
       
-      <motion.div variants={itemVariants} className="flex items-center gap-3 text-[var(--text-tertiary)] mb-8 bg-[var(--bg-card)] w-fit px-4 py-2 rounded-full border border-[var(--border-subtle)] shadow-sm">
+      <motion.div variants={itemVariants}>
         <Terminal size={16} />
-        <span className="text-sm font-mono tracking-tight">~/prithika/contact</span>
+        <span>~/prithika/contact</span>
       </motion.div>
 
-      <motion.div variants={containerVariants} className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+      <motion.div variants={containerVariants}>
         
         {/* Left Column: Form */}
-        <motion.div variants={itemVariants} className="lg:col-span-3 bg-[var(--bg-card)] p-8 md:p-10 rounded-3xl border border-[var(--border-subtle)] shadow-sm flex flex-col">
-          <h1 className="font-heading text-4xl font-bold text-[var(--text-primary)] mb-8 tracking-tight">
+        <motion.div variants={itemVariants}>
+          <h1>
             Let's Collaborate
           </h1>
 
-          {submitted ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }} 
-              animate={{ opacity: 1, scale: 1 }} 
-              className="text-center py-20 flex flex-col items-center justify-center flex-1"
-            >
-              <div className="w-20 h-20 bg-[var(--accent)]/10 text-[var(--accent)] rounded-full flex justify-center items-center mb-6">
+          {submitted ?
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}>
+
+            
+              <div>
                 <Send size={40} />
               </div>
-              <h3 className="font-heading text-2xl font-bold text-[var(--text-primary)] mb-4">Message Transmitted</h3>
-              <p className="text-[var(--text-secondary)] text-lg max-w-md mx-auto">
+              <h3>Message Transmitted</h3>
+              <p>
                 Thank you for reaching out! Your message has been securely recorded. I will review it and get back to you shortly.
               </p>
-            </motion.div>
-          ) : (
-            <form className="flex flex-col gap-6" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
+            </motion.div> :
+
+          <form onSubmit={(e) => {e.preventDefault();setSubmitted(true);}}>
+              <div>
+                <div>
                   <Label>Name</Label>
                   <Input type="text" placeholder="John Doe" required />
                 </div>
-                <div className="space-y-2">
+                <div>
                   <Label>Work Email</Label>
                   <Input type="email" placeholder="john@company.com" required />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
+              <div>
+                <div>
                   <Label>Company Name</Label>
                   <Input type="text" placeholder="Tech Corp Inc." required />
                 </div>
-                <div className="space-y-2">
+                <div>
                   <Label>Subject / Role</Label>
                   <Input type="text" placeholder="Software Engineer Position" required />
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div>
                 <Label>Message Details</Label>
-                <textarea 
-                  rows={4}
-                  placeholder="Hi Prithika, we're looking for an Engineer to join our team to work on..."
-                  required
-                  className="flex w-full rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-main)] px-3 py-2 text-sm text-[var(--text-primary)] transition-all duration-300 placeholder:text-[var(--text-tertiary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] hover:border-[var(--border-hover)] resize-y min-h-[120px]"
-                />
+                <textarea
+                rows={4}
+                placeholder="Hi Prithika, we're looking for an Engineer to join our team to work on..."
+                required />
+
+              
               </div>
 
-              <Button type="submit" size="lg" className="w-full mt-4 rounded-xl gap-2 text-[15px]">
+              <Button type="submit" size="lg">
                 <Send size={18} /> Send Message
               </Button>
             </form>
-          )}
+          }
         </motion.div>
 
         {/* Right Column: Maps and Cards */}
-        <motion.div variants={containerVariants} className="lg:col-span-2 flex flex-col gap-6">
+        <motion.div variants={containerVariants}>
           
           {/* Map Container */}
-          <motion.div variants={itemVariants} className="relative flex-1 min-h-[300px] rounded-3xl overflow-hidden border border-[var(--border-subtle)] bg-[var(--bg-card)] shadow-sm">
-            <iframe 
-              src="https://www.google.com/maps?q=Marandahalli,+Tamil+Nadu&output=embed" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(80%)' }} 
-              allowFullScreen={false} 
-              loading="lazy" 
+          <motion.div variants={itemVariants}>
+            <iframe
+              src="https://www.google.com/maps?q=Marandahalli,+Tamil+Nadu&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(80%)' }}
+              allowFullScreen={false}
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Marandahalli Location"
-              className="absolute inset-0"
-            ></iframe>
+              title="Marandahalli Location">
+
+            </iframe>
             
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] bg-[var(--bg-main)]/90 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-[var(--border-subtle)] flex items-start gap-4">
-              <div className="bg-[var(--accent)]/10 text-[var(--accent)] p-2.5 rounded-xl shrink-0">
+            <div>
+              <div>
                 <MapPin size={24} />
               </div>
               <div>
-                <h4 className="font-heading font-semibold text-[var(--text-primary)] text-lg mb-1">Global Mobility</h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                <h4>Global Mobility</h4>
+                <p>
                   Based in India • Open to remote work across global timezones.
                 </p>
               </div>
@@ -132,27 +132,27 @@ export default function ContactPage() {
           </motion.div>
 
           {/* Contact Info Cards */}
-          <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <div className="flex items-center gap-5 bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-subtle)] shadow-sm hover:shadow-[var(--shadow-soft)] transition-all">
-              <div className="p-3 bg-[var(--accent)]/10 rounded-xl text-[var(--accent)]">
+          <motion.div variants={itemVariants}>
+            <div>
+              <div>
                 <Mail size={24} />
               </div>
               <div>
-                <div className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-1">Email</div>
-                <a href="mailto:kpprithika75@gmail.com" className="text-[15px] font-medium text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">kpprithika75@gmail.com</a>
+                <div>Email</div>
+                <a href="mailto:kpprithika75@gmail.com">kpprithika75@gmail.com</a>
               </div>
             </div>
 
-            <div className="flex items-center gap-5 bg-[var(--bg-card)] p-5 rounded-2xl border border-[var(--border-subtle)] shadow-sm hover:shadow-[var(--shadow-soft)] transition-all">
-              <div className="p-3 bg-[var(--accent)]/10 rounded-xl text-[var(--accent)]">
+            <div>
+              <div>
                 <MessageSquare size={24} />
               </div>
               <div>
-                <div className="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-1">Social Networks</div>
-                <div className="flex gap-4 text-[15px] font-medium mt-1">
-                  <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">LinkedIn</a>
-                  <span className="text-[var(--border-subtle)]">|</span>
-                  <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">GitHub</a>
+                <div>Social Networks</div>
+                <div>
+                  <a href="https://www.linkedin.com/in/prithikakannan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <span>|</span>
+                  <a href="https://github.com/prithikakannan" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
               </div>
             </div>
@@ -160,6 +160,6 @@ export default function ContactPage() {
 
         </motion.div>
       </motion.div>
-    </motion.div>
-  );
+    </motion.div>);
+
 }

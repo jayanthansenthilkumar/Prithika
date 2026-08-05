@@ -3,16 +3,16 @@
 import { useState } from "react";
 
 const companies = [
-  { name: 'IBM', src: '/trusted/IBM_logo.svg' },
-  { name: 'Google', src: '/trusted/google.webp' },
-  { name: 'Meta', src: '/trusted/meta.png' },
-  { name: 'Amazon', src: '/trusted/amazon.webp' },
-  { name: 'Cloudflare', src: '/trusted/Cloudflare.webp' },
-  { name: 'Swiggy', src: '/trusted/swiggy.webp' },
-  { name: 'Blinkit', src: '/trusted/Blinkit.webp' },
-  { name: 'Vercel', src: '/trusted/vercel.svg' },
-  { name: 'Supabase', src: '/trusted/supabase.png' }
-];
+{ name: 'IBM', src: '/trusted/IBM_logo.svg' },
+{ name: 'Google', src: '/trusted/google.webp' },
+{ name: 'Meta', src: '/trusted/meta.png' },
+{ name: 'Amazon', src: '/trusted/amazon.webp' },
+{ name: 'Cloudflare', src: '/trusted/Cloudflare.webp' },
+{ name: 'Swiggy', src: '/trusted/swiggy.webp' },
+{ name: 'Blinkit', src: '/trusted/Blinkit.webp' },
+{ name: 'Vercel', src: '/trusted/vercel.svg' },
+{ name: 'Supabase', src: '/trusted/supabase.png' }];
+
 
 export function TrustedBy() {
   const [activeLogo, setActiveLogo] = useState<string | null>(null);
@@ -29,57 +29,57 @@ export function TrustedBy() {
     }
   };
 
-  const logos = (
-    <>
-      {companies.map((company) => (
-        <div 
-          key={company.name} 
-          
-          onClick={(e) => handleLogoClick(e, company.name)}
-        >
-          <img 
-            src={company.src} 
-            alt={`${company.name} logo`} 
-            
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-          />
+  const logos =
+  <>
+      {companies.map((company) =>
+    <div
+      key={company.name}
+
+      onClick={(e) => handleLogoClick(e, company.name)}>
+      
+          <img
+        src={company.src}
+        alt={`${company.name} logo`}
+
+        onError={(e) => {
+          (e.target as HTMLImageElement).style.display = 'none';
+        }} />
+      
         </div>
-      ))}
-    </>
-  );
+    )}
+    </>;
+
 
   return (
-    <section 
-      
+    <section
+
       onClick={() => {
         setActiveLogo(null);
         setIsPaused(false);
-      }}
-    >
-      <div >
+      }}>
+      
+      <div>
         
-        <h2 >
+        <h2>
           Trusted by world-class developers & industry leading teams
         </h2>
         
-        <div 
+        <div
+
+          style={{ maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)' }}>
           
-          style={{ maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)' }}
-        >
-          {[...Array(4)].map((_, i) => (
-            <div 
-              key={i} 
-               
-              aria-hidden={i !== 0}
-            >
+          {[...Array(4)].map((_, i) =>
+          <div
+            key={i}
+
+            aria-hidden={i !== 0}>
+            
               {logos}
             </div>
-          ))}
+          )}
         </div>
         
       </div>
-    </section>
-  );
+    </section>);
+
 }

@@ -6,7 +6,7 @@ import { ContactCTA } from "@/components/home/ContactCTA";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-24 pb-20">
+    <div>
       <Helmet>
         <title>Prithika Kannan | Full-Stack Software Engineer & ML Developer</title>
         <meta name="description" content="Welcome to the portfolio of Prithika Kannan. Discover my technical skills in Python, React, Flask, and Machine Learning, and explore my full-stack engineering projects." />
@@ -17,6 +17,6 @@ export default function Home() {
       <TechnologyStack />
       <FeaturedCaseStudies />
       <ContactCTA />
-    </div>
-  );
+    </div>);
+
 }

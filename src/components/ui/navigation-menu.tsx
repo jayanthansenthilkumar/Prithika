@@ -1,26 +1,26 @@
-import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
-import { cva } from "class-variance-authority"
+import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu";
+import { cva } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
-import { ChevronDownIcon } from "lucide-react"
+import { cn } from "@/lib/utils";
+import { ChevronDownIcon } from "lucide-react";
 
 function NavigationMenu({
   align = "start",
   className,
   children,
   ...props
-}: NavigationMenuPrimitive.Root.Props &
-  Pick<NavigationMenuPrimitive.Positioner.Props, "align">) {
+
+}: NavigationMenuPrimitive.Root.Props & Pick<NavigationMenuPrimitive.Positioner.Props, "align">) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
+
+      {...props}>
       
-      {...props}
-    >
       {children}
       <NavigationMenuPositioner align={align} />
-    </NavigationMenuPrimitive.Root>
-  )
+    </NavigationMenuPrimitive.Root>);
+
 }
 
 function NavigationMenuList({
@@ -30,10 +30,10 @@ function NavigationMenuList({
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 function NavigationMenuItem({
@@ -43,15 +43,15 @@ function NavigationMenuItem({
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 const navigationMenuTriggerStyle = cva(
   "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg px-2.5 py-1.5 text-sm font-medium transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted data-open:bg-muted/50 data-open:hover:bg-muted data-open:focus:bg-muted"
-)
+);
 
 function NavigationMenuTrigger({
   className,
@@ -61,13 +61,13 @@ function NavigationMenuTrigger({
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
+
+      {...props}>
       
-      {...props}
-    >
       {children}{" "}
-      <ChevronDownIcon  aria-hidden="true" />
-    </NavigationMenuPrimitive.Trigger>
-  )
+      <ChevronDownIcon aria-hidden="true" />
+    </NavigationMenuPrimitive.Trigger>);
+
 }
 
 function NavigationMenuContent({
@@ -77,10 +77,10 @@ function NavigationMenuContent({
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 function NavigationMenuPositioner({
@@ -98,15 +98,15 @@ function NavigationMenuPositioner({
         sideOffset={sideOffset}
         align={align}
         alignOffset={alignOffset}
+
+        {...props}>
         
-        {...props}
-      >
-        <NavigationMenuPrimitive.Popup >
-          <NavigationMenuPrimitive.Viewport  />
+        <NavigationMenuPrimitive.Popup>
+          <NavigationMenuPrimitive.Viewport />
         </NavigationMenuPrimitive.Popup>
       </NavigationMenuPrimitive.Positioner>
-    </NavigationMenuPrimitive.Portal>
-  )
+    </NavigationMenuPrimitive.Portal>);
+
 }
 
 function NavigationMenuLink({
@@ -116,10 +116,10 @@ function NavigationMenuLink({
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
-      
-      {...props}
-    />
-  )
+
+      {...props} />);
+
+
 }
 
 function NavigationMenuIndicator({
@@ -129,12 +129,12 @@ function NavigationMenuIndicator({
   return (
     <NavigationMenuPrimitive.Icon
       data-slot="navigation-menu-indicator"
+
+      {...props}>
       
-      {...props}
-    >
-      <div  />
-    </NavigationMenuPrimitive.Icon>
-  )
+      <div />
+    </NavigationMenuPrimitive.Icon>);
+
 }
 
 export {
@@ -146,5 +146,4 @@ export {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-  NavigationMenuPositioner,
-}
+  NavigationMenuPositioner };
