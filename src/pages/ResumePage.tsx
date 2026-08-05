@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Terminal, Download, ExternalLink } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -11,8 +12,8 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function ResumePage() {
@@ -20,69 +21,66 @@ export default function ResumePage() {
 
   return (
     <motion.div
-
       initial="hidden"
       animate="visible"
-      variants={containerVariants}>
-      
+      variants={containerVariants}
+      className="w-full max-w-5xl mx-auto pt-10 pb-24"
+    >
       <Helmet>
-        <title>Resume - Prithika Kannan</title>
+        <title>Resume | Prithika Kannan</title>
       </Helmet>
 
-      <motion.div variants={itemVariants}>
-        <Terminal size={16} />
-        <span>~/prithika/resume</span>
-      </motion.div>
+      <div className="mb-12">
+        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/10 w-fit mb-6">
+          <Terminal size={16} className="text-indigo-400" />
+          <span className="text-sm font-medium tracking-wide">~/resume</span>
+        </motion.div>
 
-      <motion.h1 variants={itemVariants}>
-        Resume & Experience
-      </motion.h1>
-      
-      <motion.p variants={itemVariants}>
-        A detailed overview of my professional engineering experience, academic qualifications, and the core competencies that define my work.
-      </motion.p>
+        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6">
+          Resume & <span className="text-zinc-500">Experience.</span>
+        </motion.h1>
         
-      <motion.div variants={itemVariants}>
-        <a
-          href={resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer">
-
+        <motion.p variants={itemVariants} className="text-xl text-zinc-400 leading-relaxed text-balance max-w-2xl mb-8">
+          A detailed overview of my professional engineering experience, academic qualifications, and the core competencies that define my work.
+        </motion.p>
           
-          <ExternalLink size={20} /> Open in New Tab
-        </a>
-        <a
-          href={resumeUrl}
-          download="Resume_Prithika.pdf">
-
-          
-          <Download size={20} /> Download PDF
-        </a>
-      </motion.div>
-
-      <motion.div
-        variants={itemVariants}>
-
-        
-        <object
-          data={resumeUrl}
-          type="application/pdf">
-
-          
-          <div>
-            <p>
-              It appears your browser doesn't support embedded PDFs.
-            </p>
-            <a
-              href={resumeUrl}
-              download="Resume_Prithika.pdf">
-
-              
-              <Download size={20} /> Download PDF Instead
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
+          <Button asChild size="lg" className="rounded-full px-8 bg-white text-zinc-950 hover:bg-zinc-200">
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+              <ExternalLink size={18} className="mr-2" /> Open in New Tab
             </a>
-          </div>
-        </object>
-      </motion.div>
-    </motion.div>);
+          </Button>
+          <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-white/20 hover:bg-white/10">
+            <a href={resumeUrl} download="Resume_Prithika.pdf">
+              <Download size={18} className="mr-2" /> Download PDF
+            </a>
+          </Button>
+        </motion.div>
+      </div>
 
+      <motion.div variants={itemVariants} className="glass-card rounded-3xl p-4 md:p-8">
+        <div className="w-full aspect-[1/1.4] max-h-[800px] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 flex items-center justify-center relative">
+          <object
+            data={resumeUrl}
+            type="application/pdf"
+            className="w-full h-full absolute inset-0 z-10"
+          >
+            <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-zinc-900 z-0">
+              <div className="w-16 h-16 rounded-full glass flex items-center justify-center mb-4">
+                <ExternalLink size={24} className="text-zinc-400" />
+              </div>
+              <p className="text-lg text-zinc-300 mb-6">
+                It appears your browser doesn't support embedded PDFs.
+              </p>
+              <Button asChild className="rounded-full bg-white text-zinc-950">
+                <a href={resumeUrl} download="Resume_Prithika.pdf">
+                  <Download size={18} className="mr-2" /> Download PDF Instead
+                </a>
+              </Button>
+            </div>
+          </object>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }
