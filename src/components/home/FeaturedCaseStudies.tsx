@@ -28,62 +28,65 @@ export function FeaturedCaseStudies() {
         </a>
       </div>
 
-      <div className="flex flex-col gap-32">
-        {featured.map((project, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-0`}
-            >
-              {/* Image Container (Asymmetrical & Edge-to-edge feel on mobile) */}
-              <div className={`w-full lg:w-2/3 relative z-0 ${isEven ? 'lg:-mr-12' : 'lg:-ml-12'}`}>
-                <div className="aspect-video w-full bg-zinc-200 dark:bg-zinc-900 rounded-3xl overflow-hidden border border-black/5 dark:border-white/5 relative group">
-                  {/* Fallback pattern for now since there are no images yet */}
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-300 dark:from-indigo-500 via-transparent to-transparent group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                  <div className="absolute inset-0 flex items-center justify-center text-zinc-400 dark:text-zinc-700 font-mono text-2xl font-bold opacity-30">
-                    {project.title.toUpperCase()} // PREVIEW
-                  </div>
-                </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+        {featured.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="glass-card rounded-3xl overflow-hidden flex flex-col h-full group"
+          >
+            {/* Image Container */}
+            <div className="aspect-video w-full bg-zinc-200 dark:bg-zinc-900 relative border-b border-black/5 dark:border-white/10 shrink-0 overflow-hidden">
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-300 dark:from-indigo-500 via-transparent to-transparent group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+              <div className="absolute inset-0 flex items-center justify-center text-zinc-400 dark:text-zinc-700 font-mono text-xl font-bold opacity-30 px-4 text-center">
+                {project.title.toUpperCase()} // PREVIEW
               </div>
+            </div>
 
-              {/* Content Container (Overlapping) */}
-              <div className={`w-full lg:w-1/2 glass-card rounded-3xl p-8 md:p-12 z-10 ${isEven ? 'lg:mr-auto' : 'lg:ml-auto'}`}>
-                <h3 className="text-3xl font-bold mb-4 text-zinc-950 dark:text-white transition-colors">{project.title}</h3>
-                <p className="text-zinc-600 dark:text-zinc-400 text-lg leading-relaxed mb-8 transition-colors">
+            {/* Content Container */}
+            <div className="p-6 md:p-8 flex flex-col flex-1 justify-between">
+              <div>
+                <h3 className="text-2xl font-bold mb-3 text-zinc-950 dark:text-white transition-colors line-clamp-1" title={project.title}>
+                  {project.title}
+                </h3>
+                <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed mb-6 transition-colors line-clamp-3">
                   {project.description}
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {project.techStack?.map((tag: string) => (
+                  {project.techStack?.slice(0, 3).map((tag: string) => (
                     <span key={tag} className="text-xs font-mono px-3 py-1 bg-black/5 dark:bg-white/5 rounded-full text-zinc-700 dark:text-zinc-300 transition-colors">
                       {tag}
                     </span>
                   ))}
-                </div>
-
-                <div className="flex items-center gap-4 pt-6 border-t border-black/5 dark:border-white/10 transition-colors">
-                  <Button asChild className="rounded-full px-6">
-                    <Link to={`/projects/${project.id}`}>
-                      View Case Study
-                    </Link>
-                  </Button>
-                  {project.link && (
-                    <Button asChild variant="outline" size="icon" className="rounded-full h-10 w-10">
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" title="Source Code">
-                        <ExternalLink size={18} />
-                      </a>
-                    </Button>
+                  {project.techStack && project.techStack.length > 3 && (
+                    <span className="text-xs font-mono px-3 py-1 bg-black/5 dark:bg-white/5 rounded-full text-zinc-500 transition-colors">
+                      +{project.techStack.length - 3}
+                    </span>
                   )}
                 </div>
               </div>
-            </motion.div>
-          );
-        })}
+
+              <div className="flex items-center gap-4 pt-6 border-t border-black/5 dark:border-white/10 transition-colors mt-auto">
+                <Button asChild className="rounded-full px-6 flex-1">
+                  <Link to={`/projects/${project.id}`}>
+                    View Case Study
+                  </Link>
+                </Button>
+                {project.link && (
+                  <Button asChild variant="outline" size="icon" className="rounded-full shrink-0">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" title="Source Code">
+                      <ExternalLink size={18} />
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
       
       <div className="mt-32 flex justify-center">
