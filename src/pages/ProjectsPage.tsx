@@ -27,7 +27,10 @@ export default function ProjectsPage() {
       className="w-full max-w-6xl mx-auto pt-10 pb-24"
     >
       <Helmet>
-        <title>Portfolio Projects | Prithika Kannan</title>
+        <title>Case Studies & Work | Prithika Kannan</title>
+        <meta name="description" content="Explore Prithika Kannan's recent software engineering case studies, featuring AI trip planners, dynamic interfaces, and more." />
+        <meta property="og:title" content="Case Studies & Work | Prithika Kannan" />
+        <meta property="og:description" content="Explore Prithika Kannan's recent software engineering case studies, featuring AI trip planners, dynamic interfaces, and more." />
       </Helmet>
       
       <div className="mb-16">

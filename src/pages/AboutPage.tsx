@@ -24,7 +24,10 @@ export default function AboutPage() {
       className="w-full max-w-6xl mx-auto pt-10 pb-20"
     >
       <Helmet>
-        <title>About | Prithika Kannan</title>
+        <title>About Prithika Kannan | Background & Philosophy</title>
+        <meta name="description" content="Learn about Prithika Kannan's journey as a Software Engineer, her design philosophy, and her technical expertise." />
+        <meta property="og:title" content="About Prithika Kannan | Background & Philosophy" />
+        <meta property="og:description" content="Learn about Prithika Kannan's journey as a Software Engineer, her design philosophy, and her technical expertise." />
       </Helmet>
       
       <div className="mb-12">

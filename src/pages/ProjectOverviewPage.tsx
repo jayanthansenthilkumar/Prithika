@@ -44,6 +44,8 @@ export default function ProjectOverviewPage() {
       <Helmet>
         <title>{project.title} | Case Study - Prithika Kannan</title>
         <meta name="description" content={`Detailed case study for ${project.title}. Read about the problem, the solution, and the tech stack.`} />
+        <meta property="og:title" content={`${project.title} | Prithika Kannan`} />
+        <meta property="og:description" content={`Detailed case study for ${project.title}. Read about the problem, the solution, and the tech stack.`} />
       </Helmet>
       
       {/* Header Section */}

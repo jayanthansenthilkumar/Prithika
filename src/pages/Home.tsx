@@ -8,8 +8,10 @@ export default function Home() {
   return (
     <div>
       <Helmet>
-        <title>Prithika Kannan | Full-Stack Software Engineer & ML Developer</title>
-        <meta name="description" content="Welcome to the portfolio of Prithika Kannan. Discover my technical skills in Python, React, Flask, and Machine Learning, and explore my full-stack engineering projects." />
+        <title>Prithika Kannan | Software Engineer & UI/UX Designer</title>
+        <meta name="description" content="Portfolio of Prithika Kannan, a Software Engineer crafting scalable architectures and premium digital experiences." />
+        <meta property="og:title" content="Prithika Kannan | Software Engineer & UI/UX Designer" />
+        <meta property="og:description" content="Portfolio of Prithika Kannan, a Software Engineer crafting scalable architectures and premium digital experiences." />
         <meta name="keywords" content="Prithika Kannan Portfolio, Software Engineer, Full-Stack Developer, Python Developer, ML Engineer" />
       </Helmet>
       

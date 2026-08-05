@@ -4,18 +4,57 @@ import { Navbar } from "@/components/layout/Navbar";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "@/components/theme-provider";
+import Lenis from "lenis";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { Preloader } from "@/components/ui/Preloader";
+import { Helmet } from "react-helmet-async";
 
 export default function RootLayout() {
   const location = useLocation();
 
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   // Scroll to top on route change
   useEffect(() => {
-    // Window is the scroll container, not mainEl
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, [location.pathname]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="antigravity-ui-theme">
+      <Helmet>
+        <title>Prithika Kannan | Software Engineer & Designer</title>
+        <meta name="description" content="Portfolio of Prithika Kannan, Software Engineer specializing in scalable architectures and premium web experiences." />
+        <meta property="og:title" content="Prithika Kannan | Software Engineer" />
+        <meta property="og:description" content="Portfolio of Prithika Kannan, Software Engineer specializing in scalable architectures and premium web experiences." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://prithikakannan.com" />
+        <meta property="og:image" content="https://prithikakannan.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
+      <Preloader />
+      <CustomCursor />
+
       <div className="relative min-h-screen overflow-hidden font-sans selection:bg-indigo-500/30 dark:selection:bg-white/20">
         
         {/* Subtle Premium Background Glows */}
