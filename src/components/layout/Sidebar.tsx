@@ -7,9 +7,6 @@ import {
   Cpu,
   Terminal,
   Mail,
-  Download,
-  ChevronsUpDown,
-  Search,
   PanelLeftClose,
   PanelLeft,
   Sparkles,
@@ -22,10 +19,13 @@ export function Sidebar() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDesktopCollapsed, setIsDesktopCollapsed] = useState(false);
+  
+  // Relying on the 'dark' class on HTML
   const [isDarkMode, setIsDarkMode] = useState(() => document.documentElement.classList.contains('dark'));
   
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('light', !isDark);
     setIsDarkMode(isDark);
   };
 
@@ -42,35 +42,29 @@ export function Sidebar() {
 
   const collapsed = !isMobile && isDesktopCollapsed;
 
-
+  const NavItem = ({ to, icon: Icon, label }: { to: string, icon: any, label: string }) => (
+    <NavLink 
+      to={to} 
+      className={({ isActive }) => `nav-item flex items-center gap-3 px-4 py-3 mx-2 my-1 rounded-xl text-[var(--text-secondary)] transition-all duration-300 font-medium ${isActive ? "active bg-[var(--accent)] text-white shadow-lg shadow-[var(--accent)]/20" : "hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] hover:translate-x-1"}`} 
+      onClick={() => isMobile && setIsMobileOpen(false)}
+    >
+      {({ isActive }) => (
+        <>
+          <Icon size={18} strokeWidth={isActive ? 2 : 1.5} className={isActive ? 'text-white' : ''} />
+          <span>{label}</span>
+        </>
+      )}
+    </NavLink>
+  );
 
   return (
     <>
       {/* Mobile Header / Desktop Floating Toggle */}
       {(isMobile || collapsed) && (
-        <div style={{ 
-          position: 'fixed', 
-          top: 0, 
-          left: 0, 
-          zIndex: 40,
-          padding: '0.75rem',
-          display: 'flex',
-          alignItems: 'center',
-          backgroundColor: isMobile ? 'var(--bg-main)' : 'transparent',
-          width: isMobile ? '100%' : 'auto',
-          borderBottom: isMobile ? '1px solid var(--border-subtle)' : 'none'
-        }}>
+        <div className={`fixed top-0 left-0 z-40 p-4 flex items-center ${isMobile ? 'bg-[var(--bg-main)] w-full border-b border-[var(--border-subtle)]' : 'bg-transparent w-auto'}`}>
           <button 
             onClick={() => isMobile ? setIsMobileOpen(true) : setIsDesktopCollapsed(false)} 
-            style={{ 
-              color: 'var(--text-secondary)',
-              padding: '0.5rem',
-              borderRadius: 'var(--radius-sm)',
-              backgroundColor: collapsed ? 'transparent' : 'transparent',
-              transition: 'background-color var(--transition-fast)'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-hover)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+            className="text-[var(--text-secondary)] p-2 rounded-lg hover:bg-[var(--bg-hover)] transition-colors"
           >
             <PanelLeft size={24} />
           </button>
@@ -80,62 +74,36 @@ export function Sidebar() {
       {/* Backdrop for mobile */}
       {isMobile && isMobileOpen && (
         <div 
-          style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.2)', zIndex: 40 }}
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity"
           onClick={() => setIsMobileOpen(false)}
         />
       )}
 
       {/* Sidebar Container */}
       <aside 
-        className={`app-sidebar ${isMobile && !isMobileOpen ? 'collapsed' : isMobile && isMobileOpen ? 'open' : ''}`}
+        className={`app-sidebar ${isMobile && !isMobileOpen ? 'collapsed' : isMobile && isMobileOpen ? 'open' : ''} 
+          flex flex-col h-screen bg-[var(--bg-sidebar)] transition-all duration-500 ease-in-out border-r border-[var(--border-subtle)]`}
         style={{ 
-          width: isMobile ? '260px' : (collapsed ? '0px' : '260px'),
-          borderRight: collapsed ? 'none' : '1px solid var(--border-subtle)',
+          width: isMobile ? '280px' : (collapsed ? '0px' : '280px'),
+          borderRightWidth: collapsed ? '0px' : '1px',
           transform: isMobile ? (isMobileOpen ? 'translateX(0)' : 'translateX(-100%)') : (collapsed ? 'translateX(-100%)' : 'translateX(0)'),
           position: isMobile ? 'fixed' : 'relative',
           zIndex: isMobile ? 50 : 10,
-          height: '100vh',
-          backgroundColor: 'var(--bg-sidebar)', // Matching the Claude exact sidebar color
-          transition: 'transform var(--transition-normal), width var(--transition-normal)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column'
         }}
       >
-        <div style={{ width: '260px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className="flex flex-col h-full w-[280px]">
           
           {/* Header */}
-          <div style={{ padding: '1.25rem 1rem 0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ 
-              fontFamily: 'var(--font-serif)', 
-              fontWeight: 600, 
-              fontSize: '22px', 
-              color: 'var(--text-primary)',
-              letterSpacing: '-0.02em',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem'
-            }}>
-              <div style={{
-                backgroundColor: 'var(--claude-beige)',
-                color: 'var(--claude-orange)',
-                width: '26px',
-                height: '26px',
-                borderRadius: '6px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
+          <div className="p-6 pb-4 flex justify-between items-center">
+            <div className="font-heading font-bold text-2xl text-[var(--text-primary)] tracking-tight flex items-center gap-3">
+              <div className="bg-[var(--accent)] text-white w-8 h-8 rounded-lg flex items-center justify-center shadow-md shadow-[var(--accent)]/20">
                 <Sparkles size={16} strokeWidth={2.5} />
               </div>
-              Prithika
+              Prithika.
             </div>
-            <div style={{ display: 'flex', gap: '0.25rem' }}>
-              <button style={iconButtonStyle} title="Search">
-                <Search size={18} strokeWidth={2} />
-              </button>
+            <div className="flex gap-1">
               <button 
-                style={iconButtonStyle} 
+                className="text-[var(--text-secondary)] p-2 rounded-lg hover:bg-[var(--bg-hover)] transition-colors"
                 onClick={() => isMobile ? setIsMobileOpen(false) : setIsDesktopCollapsed(true)}
                 title="Close sidebar"
               >
@@ -144,56 +112,36 @@ export function Sidebar() {
             </div>
           </div>
           
-          <nav style={{ flexGrow: 1, overflowY: 'auto', overflowX: 'hidden', paddingBottom: '1rem', display: 'flex', flexDirection: 'column' }}>
-            
-            <div style={{ padding: '0.5rem' }}>
-              <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Home size={18} strokeWidth={1.5} /> Home
-              </NavLink>
-              
-              <NavLink to="/about" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <User size={18} strokeWidth={1.5} /> About
-              </NavLink>
-              
-              <NavLink to="/skills" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Cpu size={18} strokeWidth={1.5} /> Skills
-              </NavLink>
-              
-              <NavLink to="/projects" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Code size={18} strokeWidth={1.5} /> Projects
-              </NavLink>
-              
-              <NavLink to="/resume" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Briefcase size={18} strokeWidth={1.5} /> Experience
-              </NavLink>
-              
-              <NavLink to="/open-source" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Terminal size={18} strokeWidth={1.5} /> Open Source
-              </NavLink>
-              
-              <NavLink to="/contact" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`} onClick={() => isMobile && setIsMobileOpen(false)}>
-                <Mail size={18} strokeWidth={1.5} /> Contact
-              </NavLink>
+          <nav className="flex-grow overflow-y-auto overflow-x-hidden pb-4 flex flex-col mt-4">
+            <div className="px-2 space-y-1">
+              <NavItem to="/" icon={Home} label="Home" />
+              <NavItem to="/about" icon={User} label="About" />
+              <NavItem to="/skills" icon={Cpu} label="Skills" />
+              <NavItem to="/projects" icon={Code} label="Projects" />
+              <NavItem to="/resume" icon={Briefcase} label="Experience" />
+              <NavItem to="/open-source" icon={Terminal} label="Open Source" />
+              <NavItem to="/contact" icon={Mail} label="Contact" />
             </div>
           </nav>
 
           {/* Bottom User Profile Section */}
-          <div style={{ padding: '0.75rem', borderTop: '1px solid var(--border-subtle)', backgroundColor: 'var(--bg-main)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <div style={{ width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--text-primary)', color: 'var(--bg-main)', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '14px', fontWeight: 600 }}>
+          <div className="p-4 m-4 rounded-2xl bg-[var(--bg-main)] border border-[var(--border-subtle)] flex items-center justify-between shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[var(--accent)] to-[var(--accent-hover)] text-white flex justify-center items-center text-sm font-bold shadow-inner">
                 PK
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div style={{ fontSize: '14.5px', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.2 }}>Prithika K</div>
-                <div style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>Free plan</div>
+              <div className="flex flex-col">
+                <div className="text-sm font-semibold text-[var(--text-primary)]">Prithika K.</div>
+                <div className="text-xs text-[var(--text-tertiary)] font-medium">Software Engineer</div>
               </div>
             </div>
-            <div style={{ display: 'flex', gap: '0.25rem' }}>
-              <button onClick={toggleTheme} style={{ ...iconButtonStyle, border: '1px solid var(--border-subtle)', borderRadius: '6px' }} title="Toggle Theme">
-                {isDarkMode ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
-              </button>
-              <button style={{ ...iconButtonStyle, border: '1px solid var(--border-subtle)', borderRadius: '6px' }}>
-                <ChevronsUpDown size={14} strokeWidth={1.5} color="var(--text-secondary)" />
+            <div className="flex">
+              <button 
+                onClick={toggleTheme} 
+                className="text-[var(--text-secondary)] p-2 rounded-xl hover:bg-[var(--bg-hover)] transition-colors hover:text-[var(--text-primary)]" 
+                title="Toggle Theme"
+              >
+                {isDarkMode ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
               </button>
             </div>
           </div>
@@ -203,13 +151,3 @@ export function Sidebar() {
     </>
   );
 }
-
-const iconButtonStyle = {
-  color: 'var(--text-secondary)',
-  padding: '0.35rem',
-  borderRadius: 'var(--radius-sm)',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  transition: 'background-color var(--transition-fast)'
-};

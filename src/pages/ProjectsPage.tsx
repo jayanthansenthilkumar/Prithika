@@ -1,93 +1,102 @@
 import { Helmet } from "react-helmet-async";
-import { Terminal, GitBranch } from "lucide-react";
+import { Terminal, GitBranch, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
+import { motion, Variants } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 export default function ProjectsPage() {
   return (
-    <div className="fade-in">
+    <motion.div 
+      className="max-w-5xl pb-16"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       <Helmet>
-        <title>Portfolio Projects | Prithika Kannan - Software Engineer</title>
+        <title>Portfolio Projects | Prithika Kannan</title>
       </Helmet>
       
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-tertiary)', marginBottom: '1.5rem' }}>
-        <Terminal size={18} />
-        <span style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>prithika/projects</span>
-      </div>
+      <motion.div variants={itemVariants} className="flex items-center gap-3 text-[var(--text-tertiary)] mb-8 bg-[var(--bg-card)] w-fit px-4 py-2 rounded-full border border-[var(--border-subtle)] shadow-sm">
+        <Terminal size={16} />
+        <span className="text-sm font-mono tracking-tight">~/prithika/projects</span>
+      </motion.div>
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '1rem', fontFamily: 'var(--font-sans)' }}>
+      <motion.h1 variants={itemVariants} className="font-heading text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">
         Projects & Case Studies
-      </h1>
+      </motion.h1>
       
-      <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0, marginBottom: '3rem', fontFamily: 'var(--font-serif)' }}>
+      <motion.p variants={itemVariants} className="text-lg text-[var(--text-secondary)] leading-relaxed font-light mb-16 max-w-3xl">
         Here is a comprehensive overview of my recent software engineering and machine learning projects. 
-        Each case study demonstrates my ability to identify complex problems, architect scalable solutions, and deliver tangible performance improvements. 
-        I prioritize maintainable code, robust database design, and intelligent algorithm integration in every system I build.
-      </p>
+        Each case study demonstrates my ability to identify complex problems, architect scalable solutions, and deliver tangible performance improvements.
+      </motion.p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      <motion.div variants={containerVariants} className="grid grid-cols-1 gap-12">
         {projects.map((project) => (
-          <div key={project.id} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 500, color: 'var(--text-primary)', margin: 0, fontFamily: 'var(--font-sans)' }}>
+          <motion.div 
+            key={project.id} 
+            variants={itemVariants}
+            className="group flex flex-col p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all duration-300 hover:shadow-[var(--shadow-hover)] hover:border-[var(--border-hover)]"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <h2 className="font-heading text-2xl md:text-3xl font-semibold text-[var(--text-primary)]">
                 {project.title}
               </h2>
               <a 
                 href={project.link} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                style={{ color: 'var(--text-tertiary)', transition: 'color var(--transition-fast)' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--claude-orange)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-tertiary)'}
+                className="text-[var(--text-tertiary)] hover:text-[var(--accent)] transition-colors p-2 rounded-xl hover:bg-[var(--bg-hover)]"
                 title="View Source on GitHub"
               >
                 <GitBranch size={24} />
               </a>
             </div>
             
-            <p style={{ fontSize: '1rem', color: 'var(--text-primary)', lineHeight: 1.7, marginBottom: '2rem', margin: 0, fontFamily: 'var(--font-serif)' }}>
+            <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8 max-w-4xl">
               {project.description}
             </p>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem', marginBottom: '2rem' }}>
-              <div>
-                <strong style={{ fontSize: '1.05rem', color: 'var(--text-primary)', display: 'block', marginBottom: '0.75rem', fontFamily: 'var(--font-sans)', fontWeight: 600 }}>The Problem context:</strong>
-                <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', margin: 0, fontFamily: 'var(--font-serif)', lineHeight: 1.7 }}>
-                  {project.problem} 
-                  This structural inefficiency caused downstream delays, frustrated end-users, and made it difficult for administrators to act on real-time data efficiently.
-                </p>
-              </div>
-              
-              <div>
-                <strong style={{ fontSize: '1.05rem', color: 'var(--text-primary)', display: 'block', marginBottom: '0.75rem', fontFamily: 'var(--font-sans)', fontWeight: 600 }}>The Engineered Solution:</strong>
-                <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', margin: 0, fontFamily: 'var(--font-serif)', lineHeight: 1.7 }}>
-                  {project.solution}
-                  By rigorously testing the new implementation and adhering to CI/CD best practices, I ensured the deployment was stable, fault-tolerant, and ready for scaling.
-                </p>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid var(--border-subtle)' }}>
-              <div style={{ width: '100%', fontSize: '14px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.5rem' }}>Technologies Used</div>
+            <div className="flex flex-wrap gap-2 mb-8">
               {project.techStack.map((tech, idx) => (
                 <span 
                   key={idx}
-                  style={{
-                    padding: '0.35rem 1rem',
-                    backgroundColor: 'var(--claude-beige)',
-                    borderRadius: 'var(--radius-full)',
-                    fontSize: '13px',
-                    color: 'var(--claude-orange)',
-                    fontFamily: 'var(--font-sans)',
-                    fontWeight: 500
-                  }}
+                  className="px-4 py-1.5 bg-[var(--accent)]/10 text-[var(--accent)] rounded-full text-sm font-medium"
                 >
                   {tech}
                 </span>
               ))}
             </div>
-          </div>
+
+            <div className="mt-auto pt-6 border-t border-[var(--border-subtle)] flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="text-sm text-[var(--text-tertiary)]">
+                  <span className="font-semibold text-[var(--text-primary)] block">Outcome:</span>
+                  {project.metric} {project.metricLabel}
+                </div>
+              </div>
+              <Button asChild variant="default" className="rounded-full rounded-tr-lg">
+                <Link to={`/projects/${project.id}`} className="flex items-center gap-2">
+                  Read Case Study <ArrowRight size={16} />
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

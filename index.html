@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <title>Prithika Kannan - Full-Stack Software Engineer & ML Developer</title>
     
     <!-- Primary Meta Tags -->
@@ -26,17 +26,9 @@
     <meta property="twitter:url" content="https://prithikakannan.com/" />
     <meta property="twitter:title" content="Prithika Kannan - Software Engineer" />
     <meta property="twitter:description" content="Portfolio of Prithika Kannan. Building scalable backends and AI-driven applications." />
-    <style>
-      :root {
-        --font-inter: 'Inter', sans-serif;
-        --font-plex-mono: 'Space Mono', monospace;
-        --font-serif: 'Space Grotesk', sans-serif;
-        --font-jakarta: 'Inter', sans-serif;
-      }
-    </style>
   </head>
-  <body class="font-sans antialiased text-foreground min-h-full flex flex-col bg-[#fcfcfc] relative">
-    <div id="root"></div>
+  <body class="bg-[var(--bg-main)] text-[var(--text-primary)] font-sans antialiased min-h-full flex flex-col relative transition-colors duration-300">
+    <div id="root" class="flex-1 flex flex-col"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

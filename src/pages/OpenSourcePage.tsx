@@ -1,5 +1,19 @@
 import { Helmet } from "react-helmet-async";
 import { Terminal, GitPullRequest, GitFork, Star, GitBranch } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 export default function OpenSourcePage() {
   const contributions = [
@@ -21,7 +35,7 @@ export default function OpenSourcePage() {
     },
     {
       repo: "prithika/portfolio-v1",
-      description: "My legacy open-source portfolio template built with React, Vite, and Tailwind CSS. It serves as a foundational boilerplate for developers looking to establish a web presence quickly. Feel free to fork it!",
+      description: "My legacy open-source portfolio template built with React, Vite, and Tailwind CSS. It serves as a foundational boilerplate for developers looking to establish a web presence quickly.",
       stars: 5,
       forks: 1,
       language: "React",
@@ -32,105 +46,105 @@ export default function OpenSourcePage() {
   const stats = [
     { label: "Public Repositories", value: "24+" },
     { label: "Total Contributions", value: "150+" },
-    { label: "Pull Requests Merged", value: "30+" },
-    { label: "GitHub Followers", value: "45" }
+    { label: "Pull Requests", value: "30+" },
+    { label: "Followers", value: "45" }
   ];
 
   return (
-    <div className="fade-in">
+    <motion.div 
+      className="max-w-5xl pb-16"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       <Helmet>
         <title>Open Source & Community | Prithika Kannan</title>
       </Helmet>
       
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-tertiary)', marginBottom: '1.5rem' }}>
-        <Terminal size={18} />
-        <span style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>prithika/open-source</span>
-      </div>
+      <motion.div variants={itemVariants} className="flex items-center gap-3 text-[var(--text-tertiary)] mb-8 bg-[var(--bg-card)] w-fit px-4 py-2 rounded-full border border-[var(--border-subtle)] shadow-sm">
+        <Terminal size={16} />
+        <span className="text-sm font-mono tracking-tight">~/prithika/open-source</span>
+      </motion.div>
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '1.5rem', fontFamily: 'var(--font-sans)' }}>
-        Building in the open
-      </h1>
+      <motion.h1 variants={itemVariants} className="font-heading text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">
+        Building in the Open
+      </motion.h1>
       
-      <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0, marginBottom: '3rem', fontFamily: 'var(--font-serif)' }}>
-        I strongly believe in the power and philosophy of open-source software. The community has provided me with incredible tools, and giving back is a core part of my engineering ethos.
-        Contributing to public repositories helps me continuously learn, share architectural knowledge, undergo rigorous peer review, and ultimately build better software together with developers globally.
-      </p>
+      <motion.p variants={itemVariants} className="text-lg text-[var(--text-secondary)] leading-relaxed font-light mb-12 max-w-3xl">
+        I strongly believe in the philosophy of open-source software. Contributing to public repositories helps me continuously learn, share knowledge, undergo peer review, and build better software together with the community.
+      </motion.p>
 
-      <a 
+      <motion.a 
+        variants={itemVariants}
         href="https://github.com/prithikakannan" 
         target="_blank" 
         rel="noopener noreferrer"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          backgroundColor: 'transparent',
-          color: 'var(--text-primary)',
-          padding: '1rem 2rem',
-          borderRadius: 'var(--radius-md)',
-          border: '1px solid var(--border-subtle)',
-          fontWeight: 500,
-          fontSize: '15px',
-          fontFamily: 'var(--font-sans)',
-          textDecoration: 'none',
-          transition: 'background-color var(--transition-fast)',
-          marginBottom: '4rem'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-hover)'}
-        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+        className="inline-flex items-center gap-2 bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[var(--text-primary)] px-8 py-4 rounded-xl font-medium hover:bg-[var(--bg-hover)] transition-all duration-300 hover:shadow-md mb-16 hover:-translate-y-1"
       >
         <GitBranch size={18} /> Follow my work on GitHub
-      </a>
+      </motion.a>
 
       {/* Stats Section */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.5rem', marginBottom: '4rem' }}>
+      <motion.div variants={containerVariants} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
         {stats.map((stat, idx) => (
-          <div key={idx} style={{ padding: '1.5rem', backgroundColor: 'var(--bg-sidebar)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
-            <div style={{ fontSize: '2rem', fontWeight: 400, color: 'var(--text-primary)', marginBottom: '0.5rem', fontFamily: 'var(--font-sans)' }}>{stat.value}</div>
-            <div style={{ fontSize: '14px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)' }}>{stat.label}</div>
-          </div>
+          <motion.div 
+            key={idx} 
+            variants={itemVariants}
+            className="p-6 bg-gradient-to-b from-[var(--bg-card)] to-[var(--bg-main)] rounded-3xl border border-[var(--border-subtle)] shadow-sm hover:shadow-md transition-shadow"
+          >
+            <div className="font-heading text-4xl md:text-5xl font-bold text-[var(--accent)] mb-2 tracking-tighter">
+              {stat.value}
+            </div>
+            <div className="text-sm font-medium text-[var(--text-secondary)]">
+              {stat.label}
+            </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Repositories Section */}
-      <h2 style={{ fontSize: '1.5rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '2rem', fontFamily: 'var(--font-sans)' }}>
+      <motion.h2 variants={itemVariants} className="font-heading text-3xl font-semibold text-[var(--text-primary)] mb-8 tracking-tight">
         Highlighted Repositories
-      </h2>
+      </motion.h2>
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem' }}>
+      <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {contributions.map((repo, idx) => (
-          <div key={idx} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <GitBranch size={20} color="var(--text-secondary)" />
-                <a href={`https://github.com/${repo.repo}`} target="_blank" rel="noopener noreferrer" style={{ fontSize: '1.2rem', fontWeight: 500, color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>
+          <motion.div 
+            key={idx} 
+            variants={itemVariants}
+            className="flex flex-col p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all duration-300 hover:shadow-[var(--shadow-hover)] hover:border-[var(--border-hover)] hover:-translate-y-1"
+          >
+            <div className="flex justify-between items-start mb-6">
+              <div className="flex items-center gap-3">
+                <GitBranch size={24} className="text-[var(--text-tertiary)]" />
+                <a href={`https://github.com/${repo.repo}`} target="_blank" rel="noopener noreferrer" className="font-heading text-xl font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors">
                   {repo.repo.split('/').pop()}
                 </a>
               </div>
-              <span style={{ fontSize: '13px', padding: '0.35rem 0.75rem', backgroundColor: 'var(--claude-beige)', borderRadius: 'var(--radius-full)', color: 'var(--claude-orange)', fontFamily: 'var(--font-sans)', fontWeight: 500 }}>
+              <span className="text-xs font-semibold px-3 py-1 bg-[var(--accent)]/10 text-[var(--accent)] rounded-full uppercase tracking-wider">
                 {repo.type}
               </span>
             </div>
             
-            <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', margin: 0, marginBottom: '2rem', lineHeight: 1.7, fontFamily: 'var(--font-serif)', flexGrow: 1 }}>
+            <p className="text-[var(--text-secondary)] leading-relaxed flex-grow mb-8 text-[15px]">
               {repo.description}
             </p>
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '14px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-sans)', borderTop: '1px solid var(--border-subtle)', paddingTop: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--claude-orange)' }}></div>
+            <div className="flex items-center gap-6 text-sm font-medium text-[var(--text-secondary)] border-t border-[var(--border-subtle)] pt-6 mt-auto">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-[var(--accent)]"></div>
                 {repo.language}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div className="flex items-center gap-1.5 hover:text-[var(--text-primary)] transition-colors">
                 <Star size={16} /> {repo.stars}
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div className="flex items-center gap-1.5 hover:text-[var(--text-primary)] transition-colors">
                 <GitFork size={16} /> {repo.forks}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

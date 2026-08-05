@@ -1,49 +1,42 @@
 import { Outlet, useLocation } from "react-router-dom";
 import "@/styles/globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function RootLayout() {
   const location = useLocation();
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayLocation, setDisplayLocation] = useState(location);
 
-  // Smooth route transition logic
+  // Scroll to top on route change
   useEffect(() => {
-    if (location.pathname !== displayLocation.pathname) {
-      setIsTransitioning(true);
-      const timeout = setTimeout(() => {
-        setDisplayLocation(location);
-        setIsTransitioning(false);
-        // Smoothly scroll back to the top of the content area on navigation
-        const mainEl = document.querySelector('.app-main');
-        if (mainEl) {
-          mainEl.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      }, 300); // match --transition-normal
-      return () => clearTimeout(timeout);
+    const mainEl = document.querySelector('.app-main');
+    if (mainEl) {
+      mainEl.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [location, displayLocation]);
+  }, [location.pathname]);
 
   return (
-    <div className="app-container">
+    <div className="app-container relative">
       <Sidebar />
-      <main className="app-main">
-        <div 
-          className="content-wrapper" 
-          style={{
-            opacity: isTransitioning ? 0 : 1,
-            transform: isTransitioning ? 'translateY(10px)' : 'translateY(0)',
-            transition: 'opacity var(--transition-normal), transform var(--transition-normal)'
-          }}
-        >
-          {/* We provide a key to Outlet based on pathname so it fully remounts/rerenders the new page for animations */}
-          <Outlet key={displayLocation.pathname} />
-          
-          <footer style={{ marginTop: 'auto', paddingTop: '2rem', textAlign: 'center', color: 'var(--text-tertiary)', fontSize: '13px', fontFamily: 'var(--font-sans)', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            © {new Date().getFullYear()} Prithika Kannan
-          </footer>
-        </div>
+      <main className="app-main relative z-0">
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={location.pathname}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="content-wrapper min-h-full flex flex-col"
+          >
+            <div className="flex-1">
+              <Outlet />
+            </div>
+            
+            <footer className="mt-12 pt-8 border-t border-[var(--border-subtle)] text-center text-[var(--text-tertiary)] text-sm font-sans flex justify-center items-center">
+              © {new Date().getFullYear()} Prithika Kannan. All rights reserved.
+            </footer>
+          </motion.div>
+        </AnimatePresence>
       </main>
     </div>
   );

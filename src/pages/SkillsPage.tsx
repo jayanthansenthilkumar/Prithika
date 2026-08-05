@@ -1,93 +1,104 @@
 import { Helmet } from "react-helmet-async";
 import { Terminal, BrainCircuit, Server, Globe, Database } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
 export default function SkillsPage() {
   const skillCategories = [
     {
       title: "Machine Learning & AI",
-      icon: <BrainCircuit size={24} />,
+      icon: <BrainCircuit size={28} />,
+      color: "text-purple-500",
+      bg: "bg-purple-500/10",
       skills: ["Scikit-Learn", "Pandas & NumPy", "TensorFlow / PyTorch", "NLP (NLTK, SpaCy)", "Data Visualization", "Predictive Modeling", "Feature Engineering"]
     },
     {
       title: "Backend Development",
-      icon: <Server size={24} />,
+      icon: <Server size={28} />,
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
       skills: ["Python", "Flask & Django", "RESTful APIs", "PHP", "Node.js", "Express", "Microservices Architecture"]
     },
     {
       title: "Frontend Development",
-      icon: <Globe size={24} />,
-      skills: ["React.js", "TypeScript / JavaScript (ES6+)", "HTML5 & CSS3", "Tailwind CSS", "Framer Motion", "Responsive Design", "Web Accessibility (a11y)"]
+      icon: <Globe size={28} />,
+      color: "text-emerald-500",
+      bg: "bg-emerald-500/10",
+      skills: ["React.js", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "Framer Motion", "Responsive Design", "Accessibility"]
     },
     {
       title: "Databases & DevOps Tools",
-      icon: <Database size={24} />,
-      skills: ["MySQL / PostgreSQL", "MongoDB", "Git & GitHub Actions", "Docker / Containerization", "Linux / Bash Scripting", "CI/CD Pipelines", "AWS Basics"]
+      icon: <Database size={28} />,
+      color: "text-amber-500",
+      bg: "bg-amber-500/10",
+      skills: ["MySQL / PostgreSQL", "MongoDB", "Git & GitHub Actions", "Docker", "Linux / Bash", "CI/CD Pipelines", "AWS Basics"]
     }
   ];
 
   return (
-    <div className="fade-in">
+    <motion.div 
+      className="max-w-5xl pb-20"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       <Helmet>
         <title>Technical Skills | Prithika Kannan</title>
       </Helmet>
       
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-tertiary)', marginBottom: '1.5rem' }}>
-        <Terminal size={18} />
-        <span style={{ fontSize: '14px', fontFamily: 'var(--font-mono)' }}>prithika/skills</span>
-      </div>
+      <motion.div variants={itemVariants} className="flex items-center gap-3 text-[var(--text-tertiary)] mb-8 bg-[var(--bg-card)] w-fit px-4 py-2 rounded-full border border-[var(--border-subtle)] shadow-sm">
+        <Terminal size={16} />
+        <span className="text-sm font-mono tracking-tight">~/prithika/skills</span>
+      </motion.div>
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '1.5rem', fontFamily: 'var(--font-sans)' }}>
+      <motion.h1 variants={itemVariants} className="font-heading text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6 tracking-tight">
         Technical Arsenal
-      </h1>
+      </motion.h1>
       
-      <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0, marginBottom: '3rem', fontFamily: 'var(--font-serif)' }}>
+      <motion.p variants={itemVariants} className="text-lg text-[var(--text-secondary)] leading-relaxed font-light mb-16 max-w-3xl">
         A comprehensive breakdown of the languages, frameworks, methodologies, and infrastructure tools I use to build intelligent applications and scalable backend systems. 
         I continuously expand this toolkit, prioritizing technologies that offer strong typing, excellent community support, and predictable performance at scale. 
-        Rather than just learning syntax, I focus on understanding the underlying paradigms of these tools to utilize them most effectively.
-      </p>
+      </motion.p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: '2rem' }}>
+      <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {skillCategories.map((category, idx) => (
-          <div key={idx} className="conversational-block" style={{ border: '1px solid var(--border-subtle)', padding: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-primary)', marginBottom: '1.5rem', fontWeight: 500 }}>
-              <div style={{ backgroundColor: 'var(--claude-beige)', color: 'var(--claude-orange)', padding: '0.5rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <motion.div 
+            key={idx} 
+            variants={itemVariants}
+            className="flex flex-col p-8 rounded-3xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all duration-300 hover:shadow-[var(--shadow-hover)] hover:border-[var(--border-hover)]"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className={`${category.bg} ${category.color} w-14 h-14 rounded-2xl flex items-center justify-center`}>
                 {category.icon}
               </div>
-              <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-sans)' }}>{category.title}</span>
+              <h2 className="font-heading text-2xl font-semibold text-[var(--text-primary)]">{category.title}</h2>
             </div>
             
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div className="flex flex-wrap gap-3">
               {category.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    backgroundColor: 'var(--bg-main)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: 'var(--radius-full)',
-                    fontSize: '14px',
-                    color: 'var(--text-secondary)',
-                    fontFamily: 'var(--font-sans)',
-                    transition: 'border-color var(--transition-fast), color var(--transition-fast), background-color var(--transition-fast)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--claude-orange)';
-                    e.currentTarget.style.color = 'var(--claude-orange)';
-                    e.currentTarget.style.backgroundColor = 'var(--claude-beige)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                    e.currentTarget.style.color = 'var(--text-secondary)';
-                    e.currentTarget.style.backgroundColor = 'var(--bg-main)';
-                  }}
+                  className="px-4 py-2 bg-[var(--bg-main)] border border-[var(--border-subtle)] rounded-xl text-[15px] font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent)]/5 cursor-default"
                 >
                   {skill}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

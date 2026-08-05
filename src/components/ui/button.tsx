@@ -1,36 +1,28 @@
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-none border-[3px] border-foreground bg-clip-padding text-sm font-bold uppercase whitespace-nowrap transition-all duration-75 outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 shadow-brutal hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_var(--color-foreground)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary",
+        default:
+          "bg-[var(--accent)] text-white shadow-md hover:bg-[var(--accent-hover)] hover:shadow-lg hover:-translate-y-0.5",
         outline:
-          "border-[3px] border-foreground bg-background hover:bg-accent hover:text-foreground aria-expanded:bg-accent aria-expanded:text-foreground",
+          "border border-[var(--border-hover)] bg-transparent hover:bg-[var(--bg-hover)] text-[var(--text-primary)] hover:text-[var(--text-primary)]",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-[var(--bg-message)] text-[var(--text-primary)] hover:bg-[var(--bg-hover)]",
         ghost:
-          "border-transparent shadow-none hover:translate-x-0 hover:translate-y-0 hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] hover:bg-accent hover:text-foreground aria-expanded:bg-accent aria-expanded:text-foreground",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive focus-visible:ring-destructive/20",
-        link: "border-transparent shadow-none hover:translate-x-0 hover:translate-y-0 hover:shadow-none text-foreground underline-offset-4 hover:underline",
+          "hover:bg-[var(--bg-hover)] hover:text-[var(--text-primary)] text-[var(--text-secondary)]",
+        link: "text-[var(--accent)] underline-offset-4 hover:underline",
       },
       size: {
-        default:
-          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 px-2 text-xs in-data-[slot=button-group]:rounded-none has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-none has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        icon: "size-8",
-        "icon-xs":
-          "size-6 in-data-[slot=button-group]:rounded-none [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm":
-          "size-7 in-data-[slot=button-group]:rounded-none",
-        "icon-lg": "size-9",
+        default: "h-10 px-5 py-2",
+        sm: "h-9 rounded-lg px-3 text-xs",
+        lg: "h-12 rounded-2xl px-8 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {
@@ -40,19 +32,23 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
-  className,
-  variant = "default",
-  size = "default",
-  ...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
-  return (
-    <ButtonPrimitive
-      data-slot="button"
-      
-      {...props}
-    />
-  )
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+Button.displayName = "Button"
 
 export { Button, buttonVariants }
