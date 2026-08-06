@@ -24,35 +24,37 @@ export default function ResumePage() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="w-full max-w-5xl mx-auto pt-10 pb-24"
+      className="w-full pt-6 md:pt-10 pb-12 md:pb-20"
     >
       <Helmet>
         <title>Resume | Prithika Kannan</title>
       </Helmet>
 
-      <div className="mb-12">
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-black/5 dark:border-white/10 w-fit mb-6">
-          <Terminal size={16} className="text-indigo-600 dark:text-indigo-400" />
-          <span className="text-sm font-medium tracking-wide text-zinc-900 dark:text-zinc-100">~/resume</span>
+      <div className="mb-10 md:mb-12 max-w-3xl">
+        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full glass border border-black/5 dark:border-white/10 w-fit mb-5 md:mb-6">
+          <Terminal size={14} className="text-indigo-600 dark:text-indigo-400 md:w-4 md:h-4" />
+          <span className="text-xs md:text-sm font-medium tracking-wide text-zinc-900 dark:text-zinc-100">~/resume</span>
         </motion.div>
 
-        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight text-balance mb-6 text-zinc-950 dark:text-white transition-colors">
+        <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance mb-4 md:mb-6 text-zinc-950 dark:text-white transition-colors">
           Resume & <span className="text-zinc-400 dark:text-zinc-500">Experience.</span>
         </motion.h1>
         
-        <motion.p variants={itemVariants} className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed text-balance max-w-2xl mb-8 transition-colors">
+        <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed text-balance mb-8 transition-colors">
           A detailed overview of my professional engineering experience, academic qualifications, and the core competencies that define my work.
         </motion.p>
           
-        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
-          <Button asChild size="lg" className="rounded-full px-8">
-            <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-              <ExternalLink size={18} className="mr-2" /> Open in New Tab
+        <motion.div variants={itemVariants} className="flex flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+          <Button asChild size="lg" className="rounded-full flex-1 sm:flex-none px-2 sm:px-8 text-xs sm:text-sm">
+            <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+              <ExternalLink size={14} className="mr-1.5 sm:mr-2 shrink-0 sm:w-[18px] sm:h-[18px]" /> 
+              <span className="truncate">Open in New Tab</span>
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg" className="rounded-full px-8">
-            <a href={resumeUrl} download="Resume_Prithika.pdf">
-              <Download size={18} className="mr-2" /> Download PDF
+          <Button asChild variant="outline" size="lg" className="rounded-full flex-1 sm:flex-none px-2 sm:px-8 text-xs sm:text-sm">
+            <a href={resumeUrl} download="Resume_Prithika.pdf" className="flex items-center justify-center">
+              <Download size={14} className="mr-1.5 sm:mr-2 shrink-0 sm:w-[18px] sm:h-[18px]" /> 
+              <span className="truncate">Download PDF</span>
             </a>
           </Button>
         </motion.div>

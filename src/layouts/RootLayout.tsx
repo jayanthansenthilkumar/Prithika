@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeProvider } from "@/components/theme-provider";
 import Lenis from "lenis";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+
 import { Preloader } from "@/components/ui/Preloader";
 import { Helmet } from "react-helmet-async";
 import { Footer } from "@/components/layout/Footer";
@@ -41,7 +41,7 @@ export default function RootLayout() {
   }, [location.pathname]);
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="antigravity-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="antigravity-ui-theme">
       <Helmet>
         <title>Prithika Kannan | Software Engineer & Designer</title>
         <meta name="description" content="Portfolio of Prithika Kannan, Software Engineer specializing in scalable architectures and premium web experiences." />
@@ -54,7 +54,7 @@ export default function RootLayout() {
       </Helmet>
 
       <Preloader />
-      <CustomCursor />
+
 
       <div className="relative min-h-screen overflow-hidden font-sans selection:bg-indigo-500/30 dark:selection:bg-white/20">
         
