@@ -1,7 +1,13 @@
+import { useState, useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Terminal, Download, ExternalLink } from "lucide-react";
+import { Terminal, Download, ExternalLink, Loader2 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -18,6 +24,23 @@ const itemVariants: Variants = {
 
 export default function ResumePage() {
   const resumeUrl = "/Resume_Prithika.pdf";
+  const [numPages, setNumPages] = useState<number>();
+  const [containerWidth, setContainerWidth] = useState<number>();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      if (entries[0]) {
+        setContainerWidth(entries[0].contentRect.width);
+      }
+    });
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.div
@@ -60,27 +83,44 @@ export default function ResumePage() {
         </motion.div>
       </div>
 
-      <motion.div variants={itemVariants} className="glass-card rounded-3xl p-4 md:p-8">
-        <div className="w-full aspect-[1/1.4] max-h-[800px] rounded-2xl overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-200 dark:bg-zinc-900 flex items-center justify-center relative transition-colors">
-          <object
-            data={resumeUrl}
-            type="application/pdf"
-            className="w-full h-full absolute inset-0 z-10"
-          >
-            <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-zinc-100 dark:bg-zinc-900 z-0 transition-colors">
-              <div className="w-16 h-16 rounded-full glass flex items-center justify-center mb-4">
-                <ExternalLink size={24} className="text-zinc-600 dark:text-zinc-400" />
+      {/* Universal Native PDF Viewer */}
+      <motion.div variants={itemVariants} className="glass-card rounded-[2rem] p-4 md:p-8">
+        <div 
+          ref={containerRef}
+          className="w-full rounded-[1.5rem] overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-200 dark:bg-zinc-900 flex flex-col items-center justify-center relative transition-colors min-h-[400px]"
+        >
+          <Document
+            file={resumeUrl}
+            onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            loading={
+              <div className="flex flex-col items-center justify-center py-20 text-zinc-500 dark:text-zinc-400">
+                <Loader2 className="w-8 h-8 animate-spin mb-4 text-indigo-500" />
+                <p className="font-medium tracking-wide">Initializing PDF Engine...</p>
               </div>
-              <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 transition-colors">
-                It appears your browser doesn't support embedded PDFs.
-              </p>
-              <Button asChild className="rounded-full">
-                <a href={resumeUrl} download="Resume_Prithika.pdf">
-                  <Download size={18} className="mr-2" /> Download PDF Instead
-                </a>
-              </Button>
-            </div>
-          </object>
+            }
+            error={
+              <div className="flex flex-col items-center justify-center py-20 text-zinc-500 p-4 text-center">
+                <p className="mb-4">Failed to load PDF engine.</p>
+                <Button asChild className="rounded-full">
+                  <a href={resumeUrl} download="Resume_Prithika.pdf">
+                    <Download size={18} className="mr-2" /> Download PDF Instead
+                  </a>
+                </Button>
+              </div>
+            }
+            className="flex flex-col items-center w-full max-w-full"
+          >
+            {numPages && Array.from(new Array(numPages), (el, index) => (
+              <Page 
+                key={`page_${index + 1}`} 
+                pageNumber={index + 1} 
+                width={containerWidth ? containerWidth : undefined}
+                className="mb-4 last:mb-0 shadow-2xl"
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
+              />
+            ))}
+          </Document>
         </div>
       </motion.div>
     </motion.div>

@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { HeroSection } from "@/components/home/HeroSection";
+import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { TechnologyStack } from "@/components/home/TechnologyStack";
+import { ExperienceHighlight } from "@/components/home/ExperienceHighlight";
 import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
 import { ContactCTA } from "@/components/home/ContactCTA";
-
 export default function Home() {
   return (
     <div>
@@ -16,9 +17,12 @@ export default function Home() {
       </Helmet>
       
       <HeroSection />
+      <AboutTeaser />
       <TechnologyStack />
+      <ExperienceHighlight />
       <FeaturedCaseStudies />
       <ContactCTA />
-    </div>);
+    </div>
+  );
 
 }
